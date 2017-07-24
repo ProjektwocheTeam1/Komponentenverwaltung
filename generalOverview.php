@@ -3,7 +3,7 @@
 	$result = array();
 
   $result[] = array(
-		"Beschreibung" => "Test Beschreibung",
+		"Bezeichnung" => "Test Bezeichnung",
 		"Raum" => "123",
 		"Einkaufsdatum" => "01.01.2000",
 		"Gewährleistungsdauer" => "365",
@@ -13,7 +13,7 @@
 		"Lieferant" => "Test Lieferant"
 	);
   $result[] = array(
-		"Beschreibung" => "Test Beschreibung 123",
+		"Bezeichnung" => "Test Bezeichnung 123",
 		"Raum" => "123222",
 		"Einkaufsdatum" => "01.01.2001",
 		"Gewährleistungsdauer" => "365",
@@ -38,31 +38,34 @@
         <h3 id="gOverviewHeader">Übersicht aller Komponenten</h3>
 
         <input type="submit" name="btnAnlegen" value="Anlegen">
-        <table class="sortable" border="1">
-          <tr>
-          <?php
-          //var_dump($result);
-            // Generate Table-Header
-      			foreach($result as $key => $value)
-      			{
-      				?>
-      					<th><?php echo $key; ?></th>
-      				<?php
-      			}
-      		?>
-          </tr>
 
-          <tr>
-          <?php
-            // Generate Table-Data
-      			foreach($result as $key => $value)
-      			{
-      				?>
-      					<td><?php echo $value; ?></td>
-      				<?php
-      			}
-      		?>
-        </tr>
+        <table class="sortable" border="1">
+  		  <tr>
+    			<th>Bezeichnung</th>
+    			<th>Raum</th>
+    			<th>Einkaufsdatum</th>
+    			<th>Gewährleistungsdauer</th>
+    			<th>Notiz</th>
+    			<th>Hersteller</th>
+    			<th>Komponentenart</th>
+    			<th>Lieferant</th>
+  		  </tr>
+
+        <?php
+    		  for($i = 0; $i < count($result); $i++) {
+    			  ?>
+    			  <tr>
+      			  <?php
+      			  foreach($result[$i] as $key => $value) {
+        			  ?>
+        				<td><?php echo $value; ?></td>
+        			  <?php
+      			  }
+      			  ?>
+      			</tr>
+      			<?php
+    		  }
+  		  ?>
         </table>
       </form>
     </div>
