@@ -1,8 +1,5 @@
 <html>
- <head>
-	<meta charset="utf-8">
-	<title>Login: IT-Verwaltung</title>
- </head>
+ <?php include('assets/header.php'); ?>
  <body>
 	<form method="POST" action="overview.php">
 		<label for="BName">Benutzername:
