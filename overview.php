@@ -1,7 +1,7 @@
 <html>
  <head>
 	<meta charset="utf-8">
-	<title>Übersicht: IT-Verwaltung</title>
+	<title><?php echo $title; ?></title>
  </head>
  <body>
 	<div>
@@ -27,5 +27,10 @@
 			}
 		?>
 	</div>
+<<<<<<< HEAD
  </body>
 </html>	
+=======
+	</body>
+</html>
+>>>>>>> 481ad6f7944f9eb059a65bdca0dac6efda73b0cf
