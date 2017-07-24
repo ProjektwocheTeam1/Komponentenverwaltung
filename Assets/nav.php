@@ -1,7 +1,3 @@
-<html>
-	<head>
-	</head>
-	<body>
 		<div class="navbar-left">
 			<img src="img/logo.png" class="img_logo"/>
 			<nav role="main">
@@ -17,5 +13,3 @@
 				</ul>
 			</nav>
 		</div>
-	</body>
-</html>
