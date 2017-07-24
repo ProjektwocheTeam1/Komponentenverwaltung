@@ -2,6 +2,7 @@
 	<head>
 		<style>
 			.navbar-left {
+				position: fixed;
 				width: 200px;
 				height: 100%;
 				float: left;
@@ -47,10 +48,6 @@
 					<li><a href="#">Komponentenattribute</a></li>
 				</ul>
 			</nav>
-		</div>
-		
-		<div class="content">
-			
 		</div>
 	</body>
 </html>
