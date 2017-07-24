@@ -1,26 +1,26 @@
 <html>
+<?php
+	$rooms = array(); //from db
+?>
  <head>
 	<meta charset="utf-8">
 	<title><?php echo $title; ?></title>
  </head>
  <body>
-	<div>
-		<img src="http://www.b3-fuerth.de/b3/home.nsf/imgref/Image_logo_metall.png/$FILE/logo_metall.png">
-		<!-- Nav-Leiste -->
-	</div>
+	<?php include('assets/nav.php'); ?>
 	<div>
 		<form method="POST" action="overview.php">
-			<label for="KSuche">Komponente suchen:
-				<input type ="text" id="KSuche" name="components">
-			</label>
-			<input class="hidden" type="submit" value="KSuche">
+			<input type ="text" id="KSuche" name="components">
+			<input class="hidden" type="submit" value="Komponente suchen">
 		</form>
 		<?php 
 			foreach($rooms as $room)
 			{
 				?>
 				<div>
-					Raum 1
+					<a href="room.php?room=<?php echo $room_id; ?>">
+						<?php echo $room['r_bezeichnung']; ?>
+					</a>
 					<!-- echo Room Name -->
 				</div>
 				<?php
