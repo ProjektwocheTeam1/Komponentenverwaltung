@@ -39,23 +39,25 @@
 
         <input type="submit" name="btnAnlegen" value="Anlegen">
 
+        <?php if (count($result) > 0) { ?>
         <table class="sortable" border="1">
-  		  <tr>
-    			<th>Bezeichnung</th>
-    			<th>Raum</th>
-    			<th>Einkaufsdatum</th>
-    			<th>Gewährleistungsdauer</th>
-    			<th>Notiz</th>
-    			<th>Hersteller</th>
-    			<th>Komponentenart</th>
-    			<th>Lieferant</th>
-  		  </tr>
+        <tr>
+        <?php
+          // Generate Table-Header
+          foreach($result[0] as $key => $value) {
+            ?>
+            <th><?php echo $key; ?></th>
+            <?php
+          }
+        ?>
+        </tr>
 
         <?php
     		  for($i = 0; $i < count($result); $i++) {
     			  ?>
     			  <tr>
       			  <?php
+              // Generate Table-Data
       			  foreach($result[$i] as $key => $value) {
         			  ?>
         				<td><?php echo $value; ?></td>
@@ -67,6 +69,7 @@
     		  }
   		  ?>
         </table>
+        <?php } ?>
       </form>
     </div>
   </body>
