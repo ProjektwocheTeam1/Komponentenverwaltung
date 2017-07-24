@@ -12,7 +12,7 @@
 	<head></head>
 	<body>
 		<div>
-			<h2>Anlegen</h2>
+			<h2>Neuer Lieferant</h2>
 			<form method="post" action="overview.php">
 				<table>
 					<?php
