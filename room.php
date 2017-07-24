@@ -2,10 +2,7 @@
 	$title =
 	$room = " ";//db
  ?>
- <head>
-	<meta charset="utf-8">
-	<title><?php echo $title; ?></title>
- </head>
+ <?php include('assets/header.php'); ?>
  
  <body>
 	<?php include('assets/nav.php'); ?>
