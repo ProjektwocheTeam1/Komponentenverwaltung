@@ -1,6 +1,8 @@
 <?php
   $title = "Komponentenübersicht";
-	$result = array(
+	$result = array();
+
+  $result[] = array(
 		"Beschreibung" => "Test Beschreibung",
 		"Raum" => "123",
 		"Einkaufsdatum" => "01.01.2000",
@@ -9,6 +11,16 @@
 		"Hersteller" => "Test Hersteller",
 		"Komponentenart" => "Test Komponentenart",
 		"Lieferant" => "Test Lieferant"
+	);
+  $result[] = array(
+		"Beschreibung" => "Test Beschreibung 123",
+		"Raum" => "123222",
+		"Einkaufsdatum" => "01.01.2001",
+		"Gewährleistungsdauer" => "365",
+		"Notiz" => "Test Notiz 123",
+		"Hersteller" => "Test Hersteller 123",
+		"Komponentenart" => "Test Komponentenart 132",
+		"Lieferant" => "Test Lieferant 123"
 	);
 	// Get DB array here as $result!
 ?>
@@ -29,6 +41,7 @@
         <table class="sortable" border="1">
           <tr>
           <?php
+          //var_dump($result);
             // Generate Table-Header
       			foreach($result as $key => $value)
       			{
