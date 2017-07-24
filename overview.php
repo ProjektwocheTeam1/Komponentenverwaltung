@@ -27,10 +27,10 @@
 			}
 		?>
 	</div>
-<<<<<<< HEAD
+
  </body>
 </html>	
-=======
+
 	</body>
 </html>
->>>>>>> 481ad6f7944f9eb059a65bdca0dac6efda73b0cf
+
