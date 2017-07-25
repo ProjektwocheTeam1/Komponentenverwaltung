@@ -38,13 +38,10 @@
 ?>
 
 <html>
-  <head>
-    <meta charset="utf-8">
-  	<title><?php echo $title; ?></title>
-    <script src="assets/sorttable.js" charset="utf-8"></script>
-  </head>
+ <?php include('assets/header.php'); ?>
 
   <body>
+ 	<?php include('assets/nav.php'); ?>
     <div id="generalOverview">
       <h3 id="gOverviewHeader">Übersicht aller Komponenten</h3>
 
