@@ -1,10 +1,9 @@
 <?php
-	$result = array(
-		"ID" => "1",
-		"Name" => "Tanna",
-		"Nachname" => "Deniz",
-		"Passwort" => "Test123"
-	);
+
+		$Con = mysqli_connect("localhost","root","","itverwaltung");
+		$query = "SELECT r_id AS ID, r_nr AS Raum-Nummer,r_bezeichnung AS Bezeichnung, r_notiz AS Notiz FROM raeume WHERE ID='1';";
+		$result = mysqli_query($Con,$query);
+		$data = mysqli_fetch_assoc($result);
 	// Get DB array here as $result!
 ?>
 
@@ -17,7 +16,7 @@
 			<form method="post" action="overview.php">
 				<table>
 					<?php
-					foreach($result as $key => $value)
+					foreach($data as $key => $value)
 					{
 						?>
 						<tr>
