@@ -7,7 +7,7 @@ function redirectToLogin()
 {
 	if(empty($_SESSION['user']))
 	{
-		header('Location: http://localhost/Komponentenverwaltung/login.php');
+		header('Location: login.php');
 		die();
 	}
 }
