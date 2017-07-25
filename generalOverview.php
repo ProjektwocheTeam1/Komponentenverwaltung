@@ -3,6 +3,7 @@
 	$result = array();
 
   $result[] = array(
+    "ID" => 0,
     "Komponentenart" => "Test Komponentenart",
 		"Raum" => "123",
 		"Einkaufsdatum" => "01.01.2000",
@@ -12,6 +13,7 @@
 		"Lieferant" => "Test Lieferant"
 	);
   $result[] = array(
+    "ID" => 1,
     "Komponentenart" => "Test Komponentenart 132",
 		"Raum" => "123222",
 		"Einkaufsdatum" => "01.01.2001",
@@ -24,6 +26,7 @@
 
   /*
     Benötigte Daten:
+    ID: komponenten.k_id
     Komponentenart: komponentenarten.ka_komponentenart
     Raum: raeume.r_bezeichnung
     Einkaufsdatum: komponenten.k_einkaufsdatum
@@ -53,9 +56,7 @@
         include('assets/table.php');
       } else {
         ?>
-        <div>
-          Keine Komponenten vorhanden!
-        </div>
+        <div>Keine Komponenten vorhanden!</div>
         <?php
       } ?>
     </div>
