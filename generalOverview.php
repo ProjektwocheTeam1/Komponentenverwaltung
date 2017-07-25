@@ -3,26 +3,35 @@
 	$result = array();
 
   $result[] = array(
-		"Bezeichnung" => "Test Bezeichnung",
+    "Komponentenart" => "Test Komponentenart",
 		"Raum" => "123",
 		"Einkaufsdatum" => "01.01.2000",
 		"Gewährleistungsdauer" => "365",
 		"Notiz" => "Test Notiz",
 		"Hersteller" => "Test Hersteller",
-		"Komponentenart" => "Test Komponentenart",
 		"Lieferant" => "Test Lieferant"
 	);
   $result[] = array(
-		"Bezeichnung" => "Test Bezeichnung 123",
+    "Komponentenart" => "Test Komponentenart 132",
 		"Raum" => "123222",
 		"Einkaufsdatum" => "01.01.2001",
 		"Gewährleistungsdauer" => "365",
 		"Notiz" => "Test Notiz 123",
 		"Hersteller" => "Test Hersteller 123",
-		"Komponentenart" => "Test Komponentenart 132",
 		"Lieferant" => "Test Lieferant 123"
 	);
 	// Get DB array here as $result!
+
+  /*
+    Benötigte Daten:
+    Komponentenart: komponentenarten.ka_komponentenart
+    Raum: raeume.r_bezeichnung
+    Einkaufsdatum: komponenten.k_einkaufsdatum
+    Gewährleistungsdauer: komponenten.k_gewaehrleistungsdatum
+    Notiz: komponenten.k_notiz
+    Hersteller: komponenten.k_hersteller
+    Lieferant: lieferant.l_firmenname
+  */
 ?>
 
 <html>
