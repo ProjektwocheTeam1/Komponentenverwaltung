@@ -1,5 +1,25 @@
 <?php
+  include('assets/helpers.php');
+  redirectToLogin();
+  $con = establishLinkForUser();
   $title = "Komponentenübersicht";
+
+  $query = <<<SQL
+    SELECT k.k_id AS ID, k.k_gewahleistungsdauer AS Gewährleistungsdauer,
+      k.k_notiz AS Notiz, k.k_hersteller AS Hersteller, k.k_einkaufsdatum AS Einkaufsdatum
+      r.r_bezeichnung as Raum, l.l_firmenname AS Lieferant,
+      ka.ka_komponentenart AS Komponentenart
+    FROM komponenten AS k
+    INNER JOIN raeume AS r
+      ON k.raeume_r_id = r.r_id
+    INNER JOIN lieferant AS l
+      ON k.lieferant_l_id = l.l_id
+    INNER JOIN komponentenarten AS ka
+      ON k.komponentenarten_ka_id = ka.ka_id;
+SQL;
+
+  $tmp = mysqli_query($con, $query);
+
 	$result = array();
 
   $result[] = array(

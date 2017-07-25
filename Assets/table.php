@@ -24,7 +24,6 @@
         ?>
         <td>
           <form action="create.php" method="get">
-            <input type="text" name="txtValue" value="<?php echo reset($v); ?>" style="display:block;">
             <input type="submit" name="btnCopy" value="Kopieren">
           </form>
         </td>
