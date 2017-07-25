@@ -19,15 +19,39 @@ function redirectToLogin()
 * @return mysqli result
 **/
 function establishLinkForUser()
+{
+	if($_SESSION['user']=='Lehrer' || $_SESSION['user']=='Verwaltung')
 	{
-		if($_SESSION['user']=='Lehrer' || $_SESSION['user']=='Verwaltung')
-		{
-			$db_link = mysqli_connect('localhost', 'Reporting', 'passwort12345', 'itverwaltung');
-		}
-		else
-		{
-			$db_link = mysqli_connect('localhost', 'Full', 'passwort12345', 'itverwaltung');
-		}
-		return $db_link;
+		$db_link = mysqli_connect('localhost', 'Reporting', 'passwort12345', 'itverwaltung');
 	}
+	else
+	{
+		$db_link = mysqli_connect('localhost', 'Full', 'passwort12345', 'itverwaltung');
+	}
+	return $db_link;
+}
+
+function breadCrumb()
+{
+	if(!isset()$_SESSION['History']))
+	{
+		$_SESSION['History'] = array();
+	}
+	
+	$url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+	$urlArray = explode("/", $url);
+	$lastEl = array_values(array_slice($urlArray, -1))[0];
+	$split = explode(".", $lastEl);
+	$currentPage = $split[0];
+	
+	if(in_array($currentPage, $_SESSION['History']))
+	{
+		$key = array_search($currentPage, $_SESSION['History']);
+		array_slice($_SESSION['History'], $key);
+	}
+	else
+	{
+		$_SESSION['History'][] = $currentPage;
+	}
+}
 ?>

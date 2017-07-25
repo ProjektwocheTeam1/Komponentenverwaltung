@@ -48,6 +48,9 @@ SQL;
  <body>
 	<?php include('assets/nav.php'); ?>
 	<div>
+		<div>
+			<a href="#">Start</a>
+		</div>
 		<form method="POST" action="overview.php">
 			<input type ="text" id="Csearch" name="components">
 			<input class="hidden" type="submit" value="Komponente suchen">
