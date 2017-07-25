@@ -1,0 +1,49 @@
+Lieferant:
+	Select:
+		SELECT l_id AS l_id, l_firmennname AS Firmenname, l_strasse AS Strasse, l_plz AS PLZ, l_ort AS Ort, l_tel AS Tel, l_mobil AS Mobil, l_fax AS Fax, l_email AS E-Mail FROM lieferant;
+	Insert:
+		INSERT INTO lieferant (l_firmennname, l_strasse, l_plz, l_ort, l_tel, l_mobil, l_fax, l_email) VALUES($_POST['Firmenname'], $_POST['Strasse'], $_POST['PLZ'], $_POST['Ort'], $_POST['Tel'], $_POST['Mobil'], $_POST['Fax'], $_POST['E-Mail']);
+	Update:
+		UPDATE lieferant SET l_firmennname = $_POST['Firmenname'], l_strasse = $_POST['Strasse'], l_plz = $_POST['PLZ'], l_ort = $_POST['Ort'], l_tel = $_POST['Tel'], l_mobil = $_POST['Mobil'], l_fax = $_POST['Fax'], l_email = $_POST['E-Mail'] WHERE l_id = l_id;
+	Delete:
+		DELETE FROM lieferant WHERE l_id = $_GET[l_id];
+
+Räume:
+	Select:
+		SELECT r_id AS r_id, r_nr AS Raumnummer, r_bezeichnung AS Bezeichnung, r_notiz AS Notiz FROM raeume;
+	Insert:
+		INSERT INTO raeume (r_nr, r_bezeichnung, r_notiz) VALUES($_POST['Raumnummer'], $_POST['Bezeichnung'], $_POST['Notiz']);
+	Update:
+		UPDATE raeume SET r_nr = $_POST['Raumnummer'], r_bezeichnung = $_POST['Bezeichnung'], r_notiz = $_POST['Notiz'] WHERE r_id = $_GET['r_id'];
+	Delete:
+		DELETE FROM raeume WHERE r_id = $_GET['r_id'];
+
+Benutzer:
+	Select:
+		SELECT benutzer_id AS b_id, username AS Benutzername, passwort AS Passwort, rechte_id AS Rechte_id, benutzervorname AS Vorname, benutzernachname AS Nachname FROM benutzer;
+	Insert:
+		INSERT INTO benutzer (username, passwort, rechte_id, benutzervorname, benutzernachname) VALUES($_POST['Benutzername'], $_POST['Passwort'], $_POST['Rechte_id'], $_POST['Vorname'], $_POST['Nachname']);
+	Update:
+		UPDATE benutzer SET username = $_POST['Benutzername'], passwort = $_POST['Passwort'], rechte_id = $_POST['Rechte_id'], benutzervorname = $_POST['Vorname'], benutzernachname = $_POST['Nachname'] WHERE benutzer_id = $_GET['b_id'];
+	Delete:
+		DELETE FROM benutzer WHERE benutzer_id = $_GET['userid'];
+
+Komponentenarten:
+	Select:
+		SELECT ka_id AS ka_id, ka_komponentenart AS Komponentenart FROM komponentenarten;
+	Insert:
+		INSERT INTO komponentenarten (ka_komponentenart) VALUES($_POST['Komponentenart']);
+	Update:
+		UPDATE komponentenarten SET ka_komponentenart = $_POST['Komponentenart'];
+	Delete:
+		DELETE FROM komponentenarten WHERE ka_id = $_GET['ka_id'];
+
+Komponentenattribute:
+	Select:
+		SELECT kat_bezeichnung AS Bezeichnung FROM komponentenattribute;
+	Insert:
+		INSERT INTO komponentenattribute (kat_bezeichnung) VALUES($_POST['Bezeichnung']);
+	Update:
+		UPDATE komponentenattribute SET kat_bezeichnung = $_POST['Bezeichnung'] WHERE kat_id = $_GET['kat_id'];
+	Delete:
+		DELETE FROM komponentenattribute WHERE kat_id = $_GET['kat_id'];
