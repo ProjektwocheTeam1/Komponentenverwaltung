@@ -49,7 +49,7 @@
       <h3 id="gOverviewHeader">Übersicht aller Komponenten</h3>
 
       <form action="create.php" method="post">
-        <input type="submit" name="btnAnlegen" value="Anlegen">
+        <input type="submit" name="btnAnlegen" value="Komponente anlegen">
       </form>
 
       <?php if (count($result) > 0) {

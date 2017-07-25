@@ -11,34 +11,35 @@
   </tr>
 
   <?php
-    for($i = 0; $i < count($result); $i++) {
+    foreach ($result as $v) {
       ?>
       <tr>
-        <?php
+      <?php
         // Generate Table-Data
-        foreach($result[$i] as $key => $value) {
+        foreach($v as $key => $value) {
           ?>
           <td id="<?php echo $i.'_'.$key; ?>"><?php echo $value; ?></td>
           <?php
         }
         ?>
         <td>
-          <form action="create.php" method="post">
+          <form action="create.php" method="get">
+            <input type="text" name="txtValue" value="<?php echo $v; ?>" style="display:none;">
             <input type="submit" name="btnCopy" value="Kopieren">
           </form>
         </td>
         <td>
-          <form action="update.php" method="post">
+          <form action="update.php" method="get">
             <input type="submit" name="btnConfig" value="Konfigurieren">
           </form>
         </td>
         <td>
-          <form action="delete.php" method="post">
+          <form action="delete.php" method="get">
             <input type="submit" name="btnDelete" value="Löschen">
           </form>
         </td>
       </tr>
       <?php
     }
-    ?>
+  ?>
 </table>
