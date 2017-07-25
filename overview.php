@@ -20,13 +20,12 @@ SQL;
 		}
 		else
 		{
-			header('Location: http://localhost/Komponentenverwaltung/login.php');
-			die();			
+			redirectToLogin();		
 		}
 		
 		//save user in session
 		session_start();
-		$_SESSION['user'] = $role
+		$_SESSION['user'] = $role;
 		mysqli_close($db_full);
 		//end login
 		
@@ -37,11 +36,7 @@ SQL;
 	}
 	else
 	{
-		if(empty($_SESSION['user']))
-		{
-			header('Location: http://localhost/Komponentenverwaltung/login.php');
-			die();
-		}
+		redirectToLogin();
 	}
 ?>
 <html>
