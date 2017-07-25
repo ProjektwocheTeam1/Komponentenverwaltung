@@ -5,8 +5,8 @@
   $title = "Komponentenübersicht";
 
   $query = <<<SQL
-    SELECT k.k_id AS ID, k.k_gewahleistungsdauer AS Gewährleistungsdauer,
-      k.k_notiz AS Notiz, k.k_hersteller AS Hersteller, k.k_einkaufsdatum AS Einkaufsdatum
+    SELECT k.k_id AS ID, k.k_gewaehrleistungsdauer AS Gewährleistungsdauer,
+      k.k_notiz AS Notiz, k.k_hersteller AS Hersteller, k.k_einkaufsdatum AS Einkaufsdatum,
       r.r_bezeichnung as Raum, l.l_firmenname AS Lieferant,
       ka.ka_komponentenart AS Komponentenart
     FROM komponenten AS k
