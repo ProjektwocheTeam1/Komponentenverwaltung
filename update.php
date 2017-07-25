@@ -1,4 +1,5 @@
 <?php
+include("Assets/helpers.php");
 	$result = array(
 		"Name" => "Tanna",
 		"Nachname" => "Deniz",
@@ -9,8 +10,9 @@
 
 
 <html>
-	<head></head>
+	<?php include("Assets/header.php");?>
 	<body>
+		<?php redirectToLogin(); include("Assets/nav.php");?>
 		<div>
 			<h2>Ändern</h2>
 			<form method="post" action="overview.php">

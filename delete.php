@@ -1,7 +1,7 @@
 <?php
-
+		include("Assets/helpers.php");
 		$Con = mysqli_connect("localhost","root","","itverwaltung");
-		$query = "SELECT r_id AS ID, r_nr AS Raum-Nummer,r_bezeichnung AS Bezeichnung, r_notiz AS Notiz FROM raeume WHERE ID='1';";
+		$query = "SELECT r_id AS ID, r_nr AS RaumNr,r_bezeichnung AS Bezeichnung, r_notiz AS Notiz FROM raeume WHERE r_id='1';";
 		$result = mysqli_query($Con,$query);
 		$data = mysqli_fetch_assoc($result);
 	// Get DB array here as $result!
@@ -9,8 +9,9 @@
 
 
 <html>
-	<head></head>
+	<?php include("Assets/header.php");?>
 	<body>
+		<?php redirectToLogin(); include("Assets/nav.php");?>
 		<div>
 			<h2>Löschen</h2>
 			<form method="post" action="overview.php">
