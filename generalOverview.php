@@ -5,10 +5,14 @@
   $title = "Komponentenübersicht";
 
   $query = <<<SQL
-    SELECT k.k_id AS ID, k.k_gewaehrleistungsdauer AS Gewährleistungsdauer,
-      k.k_notiz AS Notiz, k.k_hersteller AS Hersteller, k.k_einkaufsdatum AS Einkaufsdatum,
-      r.r_bezeichnung as Raum, l.l_firmenname AS Lieferant,
-      ka.ka_komponentenart AS Komponentenart
+    SELECT k.k_id AS ID,
+      r.r_bezeichnung AS Raum,
+      ka.ka_komponentenart AS Komponentenart,
+      k.k_hersteller AS Hersteller,
+      k.k_notiz AS Notiz,
+      k.k_gewaehrleistungsdauer AS Gewährleistungsdauer,
+      k.k_einkaufsdatum AS Einkaufsdatum,
+      l.l_firmenname AS Lieferant,
     FROM komponenten AS k
     INNER JOIN raeume AS r
       ON k.raeume_r_id = r.r_id
@@ -18,10 +22,9 @@
       ON k.komponentenarten_ka_id = ka.ka_id;
 SQL;
 
-  $tmp = mysqli_query($con, $query);
+  //$tmp = mysqli_query($con, $query);
 
 	$result = array();
-
   $result[] = array(
     "ID" => 0,
     "Komponentenart" => "Test Komponentenart",
