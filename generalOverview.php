@@ -22,42 +22,30 @@
       ON k.komponentenarten_ka_id = ka.ka_id;
 SQL;
 
-  //$tmp = mysqli_query($con, $query);
+  $result = mysqli_query($con, $query);
 
-	$result = array();
-  $result[] = array(
-    "ID" => 0,
-    "Komponentenart" => "Test Komponentenart",
-		"Raum" => "123",
-		"Einkaufsdatum" => "01.01.2000",
-		"Gewährleistungsdauer" => "365",
-		"Notiz" => "Test Notiz",
-		"Hersteller" => "Test Hersteller",
-		"Lieferant" => "Test Lieferant"
-	);
-  $result[] = array(
-    "ID" => 1,
-    "Komponentenart" => "Test Komponentenart 132",
-		"Raum" => "123222",
-		"Einkaufsdatum" => "01.01.2001",
-		"Gewährleistungsdauer" => "365",
-		"Notiz" => "Test Notiz 123",
-		"Hersteller" => "Test Hersteller 123",
-		"Lieferant" => "Test Lieferant 123"
-	);
+	// $result = array();
+  // $result[] = array(
+  //   "ID" => 0,
+  //   "Komponentenart" => "Test Komponentenart",
+	// 	"Raum" => "123",
+	// 	"Einkaufsdatum" => "01.01.2000",
+	// 	"Gewährleistungsdauer" => "365",
+	// 	"Notiz" => "Test Notiz",
+	// 	"Hersteller" => "Test Hersteller",
+	// 	"Lieferant" => "Test Lieferant"
+	// );
+  // $result[] = array(
+  //   "ID" => 1,
+  //   "Komponentenart" => "Test Komponentenart 132",
+	// 	"Raum" => "123222",
+	// 	"Einkaufsdatum" => "01.01.2001",
+	// 	"Gewährleistungsdauer" => "365",
+	// 	"Notiz" => "Test Notiz 123",
+	// 	"Hersteller" => "Test Hersteller 123",
+	// 	"Lieferant" => "Test Lieferant 123"
+	// );
 	// Get DB array here as $result!
-
-  /*
-    Benötigte Daten:
-    ID: komponenten.k_id
-    Komponentenart: komponentenarten.ka_komponentenart
-    Raum: raeume.r_bezeichnung
-    Einkaufsdatum: komponenten.k_einkaufsdatum
-    Gewährleistungsdauer: komponenten.k_gewaehrleistungsdatum
-    Notiz: komponenten.k_notiz
-    Hersteller: komponenten.k_hersteller
-    Lieferant: lieferant.l_firmenname
-  */
 ?>
 
 <html>
