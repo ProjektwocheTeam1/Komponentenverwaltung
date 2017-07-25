@@ -18,7 +18,7 @@
         // Generate Table-Data
         foreach($result[$i] as $key => $value) {
           ?>
-          <td><?php echo $value; ?></td>
+          <td id="<?php echo $i.'_'.$key; ?>"><?php echo $value; ?></td>
           <?php
         }
         ?>
