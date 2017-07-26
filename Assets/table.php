@@ -2,7 +2,7 @@
   <tr>
   <?php
     // Generate Table-Header
-    foreach($result[0] as $key => $value) {
+    foreach($result as $key => $value) {
       ?>
       <th><?php echo $key; ?></th>
       <?php
@@ -11,12 +11,12 @@
   </tr>
 
   <?php
-    foreach ($result as $v) {
+    //foreach ($result as $v) {
       ?>
       <tr>
       <?php
         // Generate Table-Data
-        foreach($v as $key => $value) {
+        foreach($result as $key => $value) {
           if ($type == 'Raum' && $key == 'Raumnummer') {
             ?>
             <td id="<?php echo $i.'_'.$key; ?>">
@@ -55,6 +55,6 @@
         </td>
       </tr>
       <?php
-    }
+    //}
   ?>
 </table>
