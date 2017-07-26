@@ -1,22 +1,28 @@
 <?php
+/**
+* Starting page of the Application. Handles login.
+* Login causes Session to be started and user saved in it.
+* Offers search field for a component.
+* Shows tiles as quick filters for each room.
+* Contains nav on the side ans breadcrumb navigation history.
+* @author: Lukas Dallhammer, Ben , Dominik Berger
+**/
 	include('Assets/helpers.php');
-		//get login credentials
+	//get login credentials
 	if(isset($_POST['login']))
 	{
-		$db_full = mysqli_connect('localhost', 'Full', 'Passwort12345', 'itverwaltung');//@TODO: database
+		$db_full = mysqli_connect('localhost', 'Full', 'Passwort12345', 'itverwaltung');
 		//start login
 		//query database for user
-
-
 		$getUserSQL = <<<SQL
 		SELECT r_bez, passwort
 		FROM rechte AS r
 		JOIN benutzer AS b ON r.rechte_id = b.rechte_id
 		WHERE b.username='{$_POST['username']}';
 SQL;
-
 		$tmp = mysqli_query($db_full, $getUserSQL);
 		$tmp = mysqli_fetch_assoc($tmp);
+		//check password integrity
 		if(password_verify($_POST['password'], $tmp['passwort']))
 		{
 			$role = $tmp['r_bez'];
@@ -25,24 +31,22 @@ SQL;
 		{
 			redirectToLogin();
 		}
-
 		//save user in session
 		session_start();
 		$_SESSION['user'] = $role;
 		mysqli_close($db_full);
 		//end login
-
-		$db_link = establishLinkForUser();
-
-		//get rooms from db
-		$getRoomsSQL = "SELECT r_id AS r_id, r_nr AS Raumnummer, r_bezeichnung AS Bezeichnung, r_notiz AS Notiz FROM raeume;";
-		$rooms = mysqli_query($db_link, $getRoomsSQL);
-		$rooms = mysqli_fetch_assoc($rooms);
 	}
 	else
 	{
 		redirectToLogin();
 	}
+	$db_link = establishLinkForUser();
+
+	//get rooms from db
+	$getRoomsSQL = "SELECT r_id AS r_id, r_nr AS Raumnummer, r_bezeichnung AS Bezeichnung, r_notiz AS Notiz FROM raeume;";
+	$rooms = mysqli_query($db_link, $getRoomsSQL);
+	$rooms = queryToArray($rooms);
 ?>
 <html>
  <?php include('Assets/header.php'); ?>
@@ -50,22 +54,27 @@ SQL;
 	<?php include('Assets/nav.php'); ?>
 	<div>
 		<?php echo breadCrumb(); ?>
-		<form method="POST" action="overview.php">
-			<input type ="text" id="Csearch" name="components">
+		<form method="POST" action="componentOverview.php">
+			<input type ="text" id="Csearch" name="componentsearch">
 			<input class="hidden" type="submit" value="Komponente suchen">
 		</form>
 		<?php
-			var_dump($rooms);
-			foreach($rooms as $room)
+			if(isset($rooms[0]))
 			{
-				?>
-				<div>
-					<a href="room.php?room=<?php echo $r_id; ?>">
-						<?php echo $room['Bezeichnung']; ?>
-					</a>
-					<!-- echo Room Name -->
-				</div>
-				<?php
+				foreach($rooms as $room)
+				{
+					?>
+					<div>
+						<a href="room.php?room=<?php echo $room['r_id']; ?>">
+							<?php echo $room['Bezeichnung']; ?>
+						</a>
+					</div>
+					<?php
+				}
+			}
+			else
+			{
+				echo "Bitte legen Sie einen Raum an um die Schnellfilterfunktion freizuschalten!";
 			}
 		?>
 	</div>
