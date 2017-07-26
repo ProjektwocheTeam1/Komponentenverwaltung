@@ -26,7 +26,7 @@ function establishLinkForUser()
 	}
 	else
 	{
-		$db_link = mysqli_connect('localhost', 'Full', 'passwort12345', 'itverwaltung');
+		$db_link = mysqli_connect('localhost', 'Full', 'Passwort12345', 'itverwaltung');
 	}
 	return $db_link;
 }
