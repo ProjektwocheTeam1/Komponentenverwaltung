@@ -1,5 +1,5 @@
 <?php
-	include('assets/helpers.php');
+	include('Assets/helpers.php');
 		//get login credentials
 	if(isset($_POST['login']))
 	{
@@ -39,7 +39,9 @@ SQL;
 		$db_link = establishLinkForUser();
 
 		//get rooms from db
-		$rooms = array(); //from db
+		$getRoomsSQL = "SELECT r_id AS r_id, r_nr AS Raumnummer, r_bezeichnung AS Bezeichnung, r_notiz AS Notiz FROM raeume;";
+		$rooms = mysqli_query($db_link, $getRoomsSQL);
+		$rooms = mysqli_fetch_assoc($rooms);
 	}
 	else
 	{
@@ -47,18 +49,17 @@ SQL;
 	}
 ?>
 <html>
- <?php include('assets/header.php'); ?>
+ <?php include('Assets/header.php'); ?>
  <body>
-	<?php include('assets/nav.php'); ?>
+	<?php include('Assets/nav.php'); ?>
 	<div>
-		<div>
-			<a href="#">Start</a>
-		</div>
+		<?php echo breadCrumb(); ?>
 		<form method="POST" action="overview.php">
 			<input type ="text" id="Csearch" name="components">
 			<input class="hidden" type="submit" value="Komponente suchen">
 		</form>
 		<?php
+			var_dump($rooms);
 			foreach($rooms as $room)
 			{
 				?>
