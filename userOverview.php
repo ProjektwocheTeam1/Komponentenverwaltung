@@ -24,7 +24,7 @@ SQL;
   <body>
     <?php
     include('assets/nav.php');
-    breadCrumb();
+    echo breadCrumb();
     ?>
     <div id="userOverview">
       <h3 id="OverviewHeader">Übersicht aller Benutzer</h3>

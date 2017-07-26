@@ -14,7 +14,7 @@
 SQL;
 
   $result = mysqli_query($con, $query);
-  $result = mysqli_fetch_assoc($result);
+  $result = queryToArray($result);
 ?>
 
 <html>
@@ -23,7 +23,7 @@ SQL;
   <body>
     <?php
     include('assets/nav.php');
-    breadCrumb();
+    echo breadCrumb();
     ?>
     <div id="supplierOverview">
       <h3 id="OverviewHeader">Übersicht aller Räume</h3>

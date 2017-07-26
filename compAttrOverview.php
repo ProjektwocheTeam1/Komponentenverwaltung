@@ -21,7 +21,7 @@ SQL;
   <body>
  	<?php
     include('assets/nav.php');
-    breadCrumb();
+    echo breadCrumb();
     ?>
     <div id="compAttrOverview">
       <h3 id="OverviewHeader">Übersicht aller Komponentenattribute</h3>

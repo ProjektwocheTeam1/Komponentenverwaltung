@@ -28,7 +28,7 @@ SQL;
   <body>
     <?php
     include('assets/nav.php');
-    breadCrumb();
+    echo breadCrumb();
     ?>
     <div id="supplierOverview">
       <h3 id="OverviewHeader">Übersicht aller Lieferanten</h3>

@@ -33,7 +33,7 @@ SQL;
   <body>
     <?php
     include('assets/nav.php');
-    breadCrumb();
+    echo breadCrumb();
     ?>
     <div id="generalOverview">
       <h3 id="OverviewHeader">Übersicht aller Komponenten</h3>
