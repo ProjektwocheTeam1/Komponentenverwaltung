@@ -3,10 +3,10 @@ include("assets/helpers.php");
 
 // redirectToLogin();
 
-// $con = establishLinkForUser();
+// establishLinkForUser();
 
 //CSV in Array einlesen
-$fp = fopen("assets/userlist.csv", "r");
+$fp = fopen("Assets/userlist.csv", "r");
 $zeilen = array();
 while( !feof($fp) ) {
     $zeilen[] = fgetcsv  ( $fp  , 4096 , ";" , "\"" );
@@ -18,7 +18,6 @@ var_dump($zeilen);
 foreach ($zeilen as &$value){
 	$value[1] = password_hash($value[1], 1);
 	}
-var_dump($zeilen);
 
 //INSERT Array to mysql-db
 $con = mysqli_connect("localhost", "Full", "Passwort12345", "itverwaltung");

@@ -1,6 +1,6 @@
 <?php
 include("Assets/helpers.php");
-//redirectToLogin(); include("Assets/nav.php");
+redirectToLogin();
 $con = establishLinkForUser();
 
 $result = array(
