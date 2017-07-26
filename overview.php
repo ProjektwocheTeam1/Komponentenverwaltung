@@ -6,11 +6,7 @@
 		$db_full = mysqli_connect('localhost', 'Full', 'Passwort12345', 'itverwaltung');//@TODO: database
 		//start login
 		//query database for user
-		$options = [
-		 'cost' => 11,
-		 'salt' => '�}��-�����mb�����r�',
-	 	];
-		$passwordhash = password_hash("admin", PASSWORD_BCRYPT,$options);
+
 
 		$getUserSQL = <<<SQL
 		SELECT r_bez, passwort
