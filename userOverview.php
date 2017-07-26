@@ -8,7 +8,6 @@
   $query = <<<SQL
     SELECT benutzer_id AS ID,
       username AS Benutzername,
-      passwort AS Passwort,
       rechte_id AS Rechte_ID,
       benutzervorname AS Vorname,
       benutzernachname AS Nachname
