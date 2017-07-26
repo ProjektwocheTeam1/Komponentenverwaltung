@@ -7,12 +7,17 @@
 	// Get DB array here as $result!
 ?>
 
+<head>
+<style>
+.delete { margin-left: 6cm;}
 
+</style>
+</head>
 <html>
 	<?php include("Assets/header.php");?>
-	<body>
+	<body style="" >
 		<?php redirectToLogin(); include("Assets/nav.php");?>
-		<div>
+		<div class="delete">
 			<h2>Löschen</h2>
 			<form method="post" action="overview.php">
 				<table>
