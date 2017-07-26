@@ -10,6 +10,7 @@ $zeilen = array();
 while( !feof($fp) ) {
     $zeilen[] = fgetcsv  ( $fp  , 4096 , ";" , "\"" );
 }
+var_dump($zeilen);
 fclose($fp);
 
 //Passwort verschlüsseln
@@ -18,7 +19,7 @@ foreach ($zeilen as &$value){
 	}
 
 //INSERT Array to mysql-db
-$con = mysqli_connect("localhost", "testuser", "test", "usertest");
+$con = mysqli_connect("localhost", "Full", "Passwort12345", "itverwaltung");
 foreach ($zeilen as &$value){
 	$sql = "INSERT INTO benutzer (username, passwort, rechte_id, benutzervorname, benutzernachname)
 	VALUES ('".$value[0]."', '".$value[1]."', ".$value[2].", '".$value[3]."', '".$value[4]."');";
