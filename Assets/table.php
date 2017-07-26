@@ -24,16 +24,19 @@
         ?>
         <td>
           <form action="create.php" method="get">
+            <input type="hidden" name="type" value="<?php echo $type ?>">
             <input type="submit" name="btnCopy" value="Kopieren">
           </form>
         </td>
         <td>
           <form action="update.php" method="get">
+            <input type="hidden" name="type" value="<?php echo $type ?>">
             <input type="submit" name="btnConfig" value="Konfigurieren">
           </form>
         </td>
         <td>
           <form action="delete.php" method="get">
+            <input type="hidden" name="type" value="<?php echo $type ?>">
             <input type="submit" name="btnDelete" value="Löschen">
           </form>
         </td>

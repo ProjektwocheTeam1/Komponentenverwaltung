@@ -3,6 +3,7 @@
   redirectToLogin();
   $con = establishLinkForUser();
   $title = "Lieferantenübersicht";
+  $type= "Lieferant";
 
   $query = <<<SQL
     SELECT l_id AS ID,

@@ -2,8 +2,8 @@
 <?php
 
 	breadCrumb();
-	
-	$title =
+
+	$title = "Raum".$_GET['room'];
 	$room = " ";//db
  ?>
  <?php include('assets/header.php'); ?>
@@ -12,7 +12,7 @@
 	<?php include('assets/nav.php'); ?>
 	<div>
 		<a href="overview.php">Start</a> >
-		<a href="generalOverview.php?type=raum">Räume</a> >
+		<a href="roomOverview.php">Räume</a> >
 		<a href="#">Raum <?= $_GET['room']?></a>
 	</div>
 	<div class="content">
@@ -23,4 +23,4 @@
 		<?php include('assets/table.php'); ?>
 	</div>
  </body>
-</html>			
+</html>

@@ -3,6 +3,7 @@
   redirectToLogin();
   $con = establishLinkForUser();
   $title = "Komponentenübersicht";
+  $type= "Komponente";
 
   $query = <<<SQL
     SELECT k.k_id AS ID,

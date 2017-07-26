@@ -3,6 +3,7 @@
   redirectToLogin();
   $con = establishLinkForUser();
   $title = "Benutzerübersicht";
+  $type= "Benutzer";
 
   $query = <<<SQL
     SELECT benutzer_id AS ID,
