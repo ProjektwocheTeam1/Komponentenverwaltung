@@ -1,20 +1,32 @@
 <?php
 include("Assets/helpers.php");
-	$result = array(
-		"Name" => "Tanna",
-		"Nachname" => "Deniz",
-		"Passwort" => "Test123"
-	);
-	// Get DB array here as $result!
-?>
+//redirectToLogin(); include("Assets/nav.php");
+$con = establishLinkForUser();
 
+$result = array(
+	"Name" => "Taner",
+	"Nachname" => "Deniz",
+	"Passwort" => "Test123"
+);
+// Get DB array here as $result!
+	
+$id = $_GET['id'];
+$title = "";
+	
+	
+?>
 
 <html>
 	<?php include("Assets/header.php");?>
 	<body>
-		<?php redirectToLogin(); include("Assets/nav.php");?>
+		<?= breadCrumb(); ?>
 		<div>
-			<h2>Ändern</h2>
+			<table>
+				<tr>
+					<td><h2>Komponente ändern</h2></td>
+					<td style="text-align: right;"><div>Komponentennummer: </div></td>
+				</tr>
+			</table>
 			<form method="post" action="overview.php">
 				<table>
 					<?php
@@ -23,12 +35,31 @@ include("Assets/helpers.php");
 						?>
 						<tr>
 							<td><label for="<?= $key ?>"><?= $key ?></label></td>
-							<td><input type="text" name="<?= $key ?>" value="<?= $value?>" /></td>
+							<td>
+							<?php
+							if($key = "Raum" || "Komponentenart")
+							{
+								?><select><?php
+									foreach(ArraySelect($key) as $element)
+									{
+										echo '<option value="'.$element.'">'.$element.'</option>';
+									}
+								?></select><?php
+							}
+							else
+							{
+								if($key = "Gewährleistung")
+								{
+									$key = "Gewährleistung (in Jahren)";
+								}
+								<input type="text" name="<?= $key ?>" value="<?= $value?>" />
+							}
+							</td>
 						</tr>
 						<?php
 					}
 					?>
-		      <tr>
+					<tr>
 						<td></td>
 						<td style="text-align: right;"><input type="submit" value="Ändern" name="create_btn" class="create_btn" /></td>
 					</tr>
