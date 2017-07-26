@@ -78,9 +78,9 @@ function ArraySelect($key)
 
 function queryToArray($result) {
 	$tmp = array();
-	foreach ($result as $value) {
-		$tmp[] = mysqli_fetch_assoc($result);
-	}
+	while($row = mysqli_fetch_assoc($result)) {
+    $tmp[] = $row;
+  }
 	return $tmp;
 }
 ?>
