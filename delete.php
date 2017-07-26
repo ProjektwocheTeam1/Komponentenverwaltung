@@ -1,6 +1,6 @@
 <?php
 		include("Assets/helpers.php");
-		$Con = mysqli_connect("localhost","root","","itverwaltung");
+		$Con = mysqli_connect("localhost","Full","tmx6Y9IX9UwQ2Acy","itverwaltung");
 		$query = "SELECT r_id AS ID, r_nr AS RaumNr,r_bezeichnung AS Bezeichnung, r_notiz AS Notiz FROM raeume WHERE r_id='1';";
 		$result = mysqli_query($Con,$query);
 		$data = mysqli_fetch_assoc($result);
