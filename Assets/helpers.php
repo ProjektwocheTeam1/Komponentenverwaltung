@@ -33,7 +33,7 @@ function establishLinkForUser()
 
 function breadCrumb()
 {
-	if(!isset()$_SESSION['History']))
+	if(!isset($_SESSION['History']))
 	{
 		$_SESSION['History'] = array();
 	}
@@ -53,5 +53,14 @@ function breadCrumb()
 	{
 		$_SESSION['History'][] = $currentPage;
 	}
+	
+	$breadCrumb = '<div>';
+	foreach($_SESSION['History'] as $value)
+	{
+		$breadCrumb.= '<a href="'.$value'.php">'.$value.'</a> > ';
+	}
+	$breadCrumb.= '</div>';
+	
+	return $breadCrumb;
 }
 ?>
