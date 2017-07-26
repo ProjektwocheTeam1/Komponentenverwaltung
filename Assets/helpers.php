@@ -66,12 +66,12 @@ function breadCrumb()
 
 function ArraySelect($key)
 {
-	if($key == "Raum") { $search = "r_bezeichnung" };
-	if($key == "Komponentenart") { $search = "ka_komponentenart" };
+	if($key == "Raum") { $search = "r_bezeichnung"; }
+	if($key == "Komponentenart") { $search = "ka_komponentenart"; }
 	$con = establishLinkForUser();
 	$query = "SELECT ".$search." FROM ".$key;
 	$result = mysqli_query($con, $query);
-	
+
 	return $result;
 }
 ?>
