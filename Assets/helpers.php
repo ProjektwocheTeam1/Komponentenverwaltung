@@ -22,7 +22,7 @@ function establishLinkForUser()
 {
 	if($_SESSION['user']=='Lehrer' || $_SESSION['user']=='Verwaltung')
 	{
-		$db_link = mysqli_connect('localhost', 'Reporting', 'passwort12345', 'itverwaltung');
+		$db_link = mysqli_connect('localhost', 'Reporting', 'Passwort12345', 'itverwaltung');
 	}
 	else
 	{
