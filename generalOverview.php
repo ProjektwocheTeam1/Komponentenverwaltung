@@ -1,6 +1,6 @@
 <?php
   include('assets/helpers.php');
-  redirectToLogin();
+    redirectToLogin();
   $con = establishLinkForUser();
   $title = "Komponentenübersicht";
 
