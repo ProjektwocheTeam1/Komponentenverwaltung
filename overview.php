@@ -1,16 +1,12 @@
 <?php
-	include('assets/helpers.php');
+	include('Assets/helpers.php');
 		//get login credentials
 	if(isset($_POST['login']))
 	{
 		$db_full = mysqli_connect('localhost', 'Full', 'Passwort12345', 'itverwaltung');//@TODO: database
 		//start login
 		//query database for user
-		$options = [
-		 'cost' => 11,
-		 'salt' => '�}��-�����mb�����r�',
-	 	];
-		$passwordhash = password_hash("admin", PASSWORD_BCRYPT,$options);
+
 
 		$getUserSQL = <<<SQL
 		SELECT r_bez, passwort
@@ -47,9 +43,9 @@ SQL;
 	}
 ?>
 <html>
- <?php include('assets/header.php'); ?>
+ <?php include('Assets/header.php'); ?>
  <body>
-	<?php include('assets/nav.php'); ?>
+	<?php include('Assets/nav.php'); ?>
 	<div>
 		<div>
 			<a href="#">Start</a>

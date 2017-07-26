@@ -6,8 +6,10 @@
   $type= "Raum";
 
   $query = <<<SQL
-    SELECT r_nr AS Raumnummer,
-			r_bezeichnung AS Bezeichnung
+    SELECT r_id as ID,
+      r_nr AS Raumnummer,
+			r_bezeichnung AS Bezeichnung,
+      r_notiz as Notiz
 		FROM raeume;
 SQL;
 
