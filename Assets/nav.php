@@ -1,5 +1,5 @@
 <div class="navbar-left">
-	<img src="img/logo.png" class="img_logo"/>
+	<img src="Assets/img/logo.png" class="img_logo"/>
 	<nav role="main">
 		<a href="overview.php">Start</a>
 		<span>Verwaltung</span>
