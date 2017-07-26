@@ -1,5 +1,5 @@
 <?php
-	include('assets/helpers.php');
+	include('Assets/helpers.php');
 		//get login credentials
 	if(isset($_POST['login']))
 	{
@@ -10,8 +10,9 @@
 		SELECT r_bez, passwort
 		FROM rechte AS r
 		JOIN benutzer AS b ON r.rechte_id = b.rechte_id
-		WHERE b.username={$_POST['username']}
+		WHERE b.username='{$_POST['username']}';
 SQL;
+
 		$tmp = mysqli_query($db_full, $getUserSQL);
 		$tmp = mysqli_fetch_assoc($tmp);
 		if(password_verify($_POST['password'], $tmp['passwort']))
@@ -40,9 +41,9 @@ SQL;
 	}
 ?>
 <html>
- <?php include('assets/header.php'); ?>
+ <?php include('Assets/header.php'); ?>
  <body>
-	<?php include('assets/nav.php'); ?>
+	<?php include('Assets/nav.php'); ?>
 	<div>
 		<div>
 			<a href="#">Start</a>
