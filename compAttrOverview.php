@@ -3,6 +3,7 @@
   redirectToLogin();
   $con = establishLinkForUser();
   $title = "Komponentenattributübersicht";
+  $type= "Komponentenattribut";
 
   $query = <<<SQL
     SELECT kat_id AS ID,

@@ -3,6 +3,7 @@
   redirectToLogin();
   $con = establishLinkForUser();
   $title = "Komponentenartenübersicht";
+  $type= "Komponentenart";
 
   $query = <<<SQL
     SELECT ka_id AS ID,

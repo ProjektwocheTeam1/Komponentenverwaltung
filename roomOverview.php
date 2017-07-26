@@ -3,6 +3,7 @@
   redirectToLogin();
   $con = establishLinkForUser();
   $title = "Raumübersicht";
+  $type= "Raum";
 
   $query = <<<SQL
     SELECT r_nr AS Raumnummer,
