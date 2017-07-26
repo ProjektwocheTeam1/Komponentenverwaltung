@@ -3,7 +3,7 @@
 		//get login credentials
 	if(isset($_POST['login']))
 	{
-		$db_full = mysqli_connect('localhost', 'user', 'password', 'database');//@TODO: database
+		$db_full = mysqli_connect('localhost', 'Full', 'Passwort12345', 'itverwaltung');//@TODO: database
 		//start login
 		//query database for user
 		$getUserSQL = <<<SQL
