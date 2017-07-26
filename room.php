@@ -1,10 +1,13 @@
 <html>
 <?php
+
+	breadCrumb();
+	
 	$title =
 	$room = " ";//db
  ?>
  <?php include('assets/header.php'); ?>
- 
+
  <body>
 	<?php include('assets/nav.php'); ?>
 	<div>
