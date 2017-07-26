@@ -1,8 +1,8 @@
 <div class="navbar-left">
-	<img src="assets/img/logo.png" class="img_logo"/>
+	<div class="navlogo"><img src="assets/img/logo.png" class="img_logo"/></div>
 	<nav role="main">
 		<a class="nav_a" href="overview.php">Start</a>
-		<span class="nav_span" >Verwaltung</span>
+		<span class="nav_span">Verwaltung</span>
 		<ul>
 			<li><a class="nav_a" href="./supplierOverview.php">Lieferanten</a></li>
 			<li><a class="nav_a" href="./roomOverview.php">R&auml;ume</a></li>

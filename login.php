@@ -1,16 +1,30 @@
 <html>
- <?php include('assets/header.php');?>
- <body>
-	<form method="POST" action="overview.php">
-		<label for="BName">Benutzername:
-			<input type ="text" id="BName" name="username">
-		</label>
-		<br />
-		<label for="Pass">Passwort:
-			<input type ="password" id="Pass" name="password">
-		</label>
-		<br />
-		<input type="submit" name="login" value="Anmelden">
-	</form>
- </body>
+<?php include('assets/header.php');?>
+	<body>
+		<div class="loginContent">
+			<h1>Komponentenverwaltung</h1>
+			<div class="loginlabel">Login</div>
+			<div class="loginform">
+				<form method="POST" action="overview.php">
+					<table align="center">
+						<tr>
+							<td><label for="BName">Benutzername:</label></td>
+							<td><input type ="text" id="BName" name="username"></td>
+						</tr>
+						<tr>
+							<td><label for="Pass">Passwort:</label></td>
+							<td><input type ="password" id="Pass" name="password"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td style="text-align: right;"><input type="submit" name="login" value="Anmelden"></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<img class="loginfooter" src="Assets/img/footer.png"/>
+		</div>
+	</body>
+	<footer>
+	</footer>
 </html>
