@@ -3,7 +3,6 @@
 		//get login credentials
 	if(isset($_POST['login']))
 	{
-		$db_full = mysqli_connect('localhost', 'Full', 'Passwort12345', 'itverwaltung');//@TODO: database
 		//start login
 		//query database for user
 		$options = [
@@ -16,17 +15,16 @@
 		FROM rechte AS r
 		JOIN benutzer AS b ON r.rechte_id = b.rechte_id
 		WHERE b.username={$_POST['username']}
+		WHERE b.username='{$_POST['username']}';
 SQL;
 		$tmp = mysqli_query($db_full, $getUserSQL);
 		$tmp = mysqli_fetch_assoc($tmp);
 		if(password_verify($_POST['password'], $tmp['passwort']))
 		{
 			$role = $tmp['r_bez'];
-			echo("role nicht empty");
 		}
 		else
 		{
-			echo("role ist empty");
 			redirectToLogin();
 		}
 		
