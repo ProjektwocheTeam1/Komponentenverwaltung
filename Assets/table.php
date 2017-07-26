@@ -17,9 +17,19 @@
       <?php
         // Generate Table-Data
         foreach($v as $key => $value) {
-          ?>
-          <td id="<?php echo $i.'_'.$key; ?>"><?php echo $value; ?></td>
-          <?php
+          if ($type == 'Raum' && $key == 'Raumnummer') {
+            ?>
+            <td id="<?php echo $i.'_'.$key; ?>">
+              <a href="room.php?<?php echo $value; ?>">
+                <?php echo $value; ?>
+              </a>
+            </td>
+            <?php
+          } else {
+            ?>
+            <td id="<?php echo $i.'_'.$key; ?>"><?php echo $value; ?></td>
+            <?php
+          }
         }
         ?>
         <td>
