@@ -4,16 +4,14 @@ include("Assets/helpers.php");
 $con = establishLinkForUser();
 
 $result = array(
-	"Name" => "Taner",
-	"Nachname" => "Deniz",
+	"Name" => "Max",
+	"Nachname" => "Mustermann",
 	"Passwort" => "Test123"
 );
 // Get DB array here as $result!
 	
-$id = $_GET['id'];
+// $id = $_GET['id'];
 $title = "";
-	
-	
 ?>
 
 <html>
@@ -37,14 +35,14 @@ $title = "";
 							<td><label for="<?= $key ?>"><?= $key ?></label></td>
 							<td>
 							<?php
-							if($key = "Raum" || "Komponentenart")
+							if($key == "Raum" || $key == "Komponentenart")
 							{
-								?><select><?php
+								echo'<select>';
 									foreach(ArraySelect($key) as $element)
 									{
 										echo '<option value="'.$element.'">'.$element.'</option>';
 									}
-								?></select><?php
+								echo '</select>';
 							}
 							else
 							{
@@ -52,7 +50,7 @@ $title = "";
 								{
 									$key = "Gewährleistung (in Jahren)";
 								}
-								?><input type="text" name="<?= $key ?>" value="<?= $value ?>" /><?php
+								echo '<input type="text" name="'.$key.'" value="'.$value.'" />';
 							}
 							?></td>
 						</tr>
