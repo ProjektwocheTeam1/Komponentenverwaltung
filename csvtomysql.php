@@ -1,17 +1,18 @@
 <?php
+include("assets/helpers.php");
 
-include("Assets/helpers.php");
+// redirectToLogin();
 
-redirectToLogin();
-establishLinkForUser();
+// establishLinkForUser();
+
 //CSV in Array einlesen
 $fp = fopen("Assets/userlist.csv", "r");
 $zeilen = array();
 while( !feof($fp) ) {
     $zeilen[] = fgetcsv  ( $fp  , 4096 , ";" , "\"" );
 }
-var_dump($zeilen);
 fclose($fp);
+var_dump($zeilen);
 
 //Passwort verschlüsseln
 foreach ($zeilen as &$value){
