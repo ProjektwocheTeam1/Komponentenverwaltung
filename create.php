@@ -1,10 +1,12 @@
 <?php
 include("Assets/helpers.php");
-	$result = array(
-		"Name" => "Tanna",
-		"Nachname" => "Deniz",
-		"Passwort" => "Test123"
-	);
+	$con = establishLinkForUser();
+	if(isset($_GET['type']))
+	{
+		if(){
+
+		}
+	}
 	// Get DB array here as $result!
 ?>
 

@@ -15,7 +15,7 @@
 	width: 120px;
 }
 
-.nav_a, .nav_span {
+a, span {
 	margin: 0;
 	display: block;
 	text-decoration: none;
@@ -23,9 +23,8 @@
 	padding: 8px 6px;
 	border: 1px solid lightgrey;
 }
-
 ul { margin: 0; }
 
-.nav_a:hover {
+a:hover, span:hover, li:hover {
 	border: 1px solid blue;
 }
