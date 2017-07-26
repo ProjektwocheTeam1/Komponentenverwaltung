@@ -20,7 +20,7 @@
           if ($type == 'Raum' && $key == 'Raumnummer') {
             ?>
             <td id="<?php echo $i.'_'.$key; ?>">
-              <a href="room.php?<?php echo $value; ?>">
+              <a href="room.php?room=<?php echo $value; ?>">
                 <?php echo $value; ?>
               </a>
             </td>
@@ -34,19 +34,22 @@
         ?>
         <td>
           <form action="create.php" method="get">
-            <input type="hidden" name="type" value="<?php echo $type ?>">
+            <input type="hidden" name="type" value="<?php echo $type; ?>">
+            <input type="hidden" name="id" value="<?php echo $v['ID']; ?>">
             <input type="submit" name="btnCopy" value="Kopieren">
           </form>
         </td>
         <td>
           <form action="update.php" method="get">
-            <input type="hidden" name="type" value="<?php echo $type ?>">
+            <input type="hidden" name="type" value="<?php echo $type; ?>">
+            <input type="hidden" name="id" value="<?php echo $v['ID']; ?>">
             <input type="submit" name="btnConfig" value="Konfigurieren">
           </form>
         </td>
         <td>
           <form action="delete.php" method="get">
             <input type="hidden" name="type" value="<?php echo $type ?>">
+            <input type="hidden" name="id" value="<?php echo $v['ID']; ?>">
             <input type="submit" name="btnDelete" value="Löschen">
           </form>
         </td>
