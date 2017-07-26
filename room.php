@@ -1,7 +1,7 @@
 <html>
 <?php
 
-	include('assets/helpers.php'); ?>
+	breadCrumb();
 	
 	$title =
 	$room = " ";//db

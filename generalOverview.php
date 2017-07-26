@@ -1,7 +1,6 @@
 <?php
   include('assets/helpers.php');
-  breadCrumb();
-  redirectToLogin();
+    redirectToLogin();
   $con = establishLinkForUser();
   $title = "Komponentenübersicht";
 
