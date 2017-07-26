@@ -52,9 +52,9 @@ $title = "";
 								{
 									$key = "Gewährleistung (in Jahren)";
 								}
-								<input type="text" name="<?= $key ?>" value="<?= $value?>" />
+								?><input type="text" name="<?= $key ?>" value="<?= $value ?>" /><?php
 							}
-							</td>
+							?></td>
 						</tr>
 						<?php
 					}
