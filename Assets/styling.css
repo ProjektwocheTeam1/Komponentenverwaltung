@@ -26,6 +26,6 @@
 
 ul { margin: 0; }
 
-.nav_a:hover, .nav_span:hover {
+.nav_a:hover {
 	border: 1px solid blue;
 }
