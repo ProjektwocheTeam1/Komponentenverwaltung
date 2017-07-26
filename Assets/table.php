@@ -19,7 +19,7 @@
         foreach($result as $key => $value) {
           if ($type == 'Raum' && $key == 'Raumnummer') {
             ?>
-            <td id="<?php echo $i.'_'.$key; ?>">
+            <td>
               <a href="room.php?room=<?php echo $result['ID']; ?>">
                 <?php echo $value; ?>
               </a>
@@ -27,7 +27,7 @@
             <?php
           } else {
             ?>
-            <td id="<?php echo $i.'_'.$key; ?>"><?php echo $value; ?></td>
+            <td><?php echo $value; ?></td>
             <?php
           }
         }
