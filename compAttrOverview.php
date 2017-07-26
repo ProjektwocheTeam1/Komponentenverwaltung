@@ -1,7 +1,6 @@
 <?php
   include('assets/helpers.php');
   redirectToLogin();
-  breadCrumb();
   $con = establishLinkForUser();
   $title = "Komponentenattributübersicht";
   $type= "Komponentenattribut";
@@ -20,7 +19,10 @@ SQL;
  <?php include('assets/header.php'); ?>
 
   <body>
- 	<?php include('assets/nav.php'); ?>
+ 	<?php
+    include('assets/nav.php');
+    breadCrumb();
+    ?>
     <div id="compAttrOverview">
       <h3 id="OverviewHeader">Übersicht aller Komponentenattribute</h3>
 

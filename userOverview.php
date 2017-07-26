@@ -1,7 +1,6 @@
 <?php
   include('assets/helpers.php');
   redirectToLogin();
-  breadCrumb();
   $con = establishLinkForUser();
   $title = "Benutzerübersicht";
   $type= "Benutzer";
@@ -24,7 +23,10 @@ SQL;
  <?php include('assets/header.php'); ?>
 
   <body>
- 	<?php include('assets/nav.php'); ?>
+    <?php
+    include('assets/nav.php');
+    breadCrumb();
+    ?>
     <div id="userOverview">
       <h3 id="OverviewHeader">Übersicht aller Benutzer</h3>
 
