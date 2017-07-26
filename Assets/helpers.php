@@ -6,7 +6,7 @@
 function redirectToLogin()
 {
 	session_start();
-	
+
 	if(empty($_SESSION['user']))
 	{
 		header('Location: login.php');
@@ -37,13 +37,13 @@ function breadCrumb()
 	{
 		$_SESSION['History'] = array();
 	}
-	
+
 	$url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 	$urlArray = explode("/", $url);
 	$lastEl = array_values(array_slice($urlArray, -1))[0];
 	$split = explode(".", $lastEl);
 	$currentPage = $split[0];
-	
+
 	if(in_array($currentPage, $_SESSION['History']))
 	{
 		$key = array_search($currentPage, $_SESSION['History']);
@@ -53,14 +53,25 @@ function breadCrumb()
 	{
 		$_SESSION['History'][] = $currentPage;
 	}
-	
+
 	$breadCrumb = '<div>';
 	foreach($_SESSION['History'] as $value)
 	{
-		$breadCrumb.= '<a href="'.$value'.php">'.$value.'</a> > ';
+		$breadCrumb.= '<a href="'.$value.'.php">'.$value.'</a> > ';
 	}
 	$breadCrumb.= '</div>';
-	
+
 	return $breadCrumb;
+}
+
+function ArraySelect($key)
+{
+	if($key == "Raum") { $search = "r_bezeichnung" };
+	if($key == "Komponentenart") { $search = "ka_komponentenart" };
+	$con = establishLinkForUser();
+	$query = "SELECT ".$search." FROM ".$key;
+	$result = mysqli_query($con, $query);
+	
+	return $result;
 }
 ?>
