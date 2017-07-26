@@ -25,7 +25,6 @@
 SQL;
 
   $result = mysqli_query($con, $query);
-  $result = mysqli_fetch_assoc($result);
 ?>
 
 <html>

@@ -36,7 +36,6 @@ $title = "";
 						?>
 						<tr>
 							<td><label for="<?= $key ?>"><?= $key ?></label></td>
-<<<<<<< HEAD
 							<td><?php
 								if($key == "Raum" || $key == "Komponentenart")
 								{
@@ -50,32 +49,11 @@ $title = "";
 								else
 								{
 									if($key = "Gewährleistung")
-=======
-							<td>
-							<?php
-							if($key = "Raum" || "Komponentenart")
-							{
-								?><select><?php
-									foreach(ArraySelect($key) as $element)
->>>>>>> 08d850f4d4ef6456e22d0613f7ce19801ed6ece9
 									{
 										$key = "Gewährleistung (in Jahren)";
 									}
-<<<<<<< HEAD
 									echo '<input type="text" name="'.$key.'" value="'.$value.'" />';
 								}
-=======
-								?></select><?php
-							}
-							else
-							{
-								if($key = "Gewährleistung")
-								{
-									$key = "Gewährleistung (in Jahren)";
-								}
-								?><input type="text" name="<?= $key ?>" value="<?= $value ?>" /><?php
-							}
->>>>>>> 08d850f4d4ef6456e22d0613f7ce19801ed6ece9
 							?></td>
 						</tr>
 						<?php
