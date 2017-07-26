@@ -6,6 +6,11 @@
 		$db_full = mysqli_connect('localhost', 'Full', 'Passwort12345', 'itverwaltung');//@TODO: database
 		//start login
 		//query database for user
+		$options = [
+		 'cost' => 11,
+		 'salt' => '�}��-�����mb�����r�',
+	 	];
+		$passwordhash = password_hash("admin", PASSWORD_BCRYPT,$options);
 		$getUserSQL = <<<SQL
 		SELECT r_bez, passwort
 		FROM rechte AS r
@@ -17,10 +22,12 @@ SQL;
 		if(password_verify($_POST['password'], $tmp['passwort']))
 		{
 			$role = $tmp['r_bez'];
+			echo("role nicht empty");
 		}
 		else
 		{
-			redirectToLogin();		
+			echo("role ist empty");
+			redirectToLogin();
 		}
 		
 		//save user in session
