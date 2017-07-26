@@ -10,7 +10,7 @@ $result = array(
 );
 // Get DB array here as $result!
 	
-$id = $_GET['id'];
+// $id = $_GET['id'];
 $title = "";
 	
 	
@@ -64,7 +64,7 @@ $title = "";
 						<td style="text-align: right;"><input type="submit" value="Ändern" name="create_btn" class="create_btn" /></td>
 					</tr>
 				</table>
-				<?php include("assets/table.php"); ?>
+				<?php //include("assets/table.php"); ?>
 			</form>
 		</div>
 	</body>
