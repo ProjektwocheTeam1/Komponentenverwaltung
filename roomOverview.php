@@ -1,6 +1,7 @@
 <?php
   include('assets/helpers.php');
   redirectToLogin();
+  breadCrumb();
   $con = establishLinkForUser();
   $title = "Raumübersicht";
   $type= "Raum";
