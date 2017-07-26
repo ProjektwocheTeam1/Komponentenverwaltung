@@ -12,8 +12,6 @@ $result = array(
 	
 // $id = $_GET['id'];
 $title = "";
-	
-	
 ?>
 
 <html>
