@@ -10,7 +10,7 @@ $result = array(
 );
 // Get DB array here as $result!
 	
-$id = $_GET['id'];
+// $id = $_GET['id'];
 $title = "";
 	
 	
@@ -19,6 +19,7 @@ $title = "";
 <html>
 	<?php include("Assets/header.php");?>
 	<body>
+		<?php include('assets/nav.php'); ?>
 		<?= breadCrumb(); ?>
 		<div>
 			<table>
@@ -35,25 +36,24 @@ $title = "";
 						?>
 						<tr>
 							<td><label for="<?= $key ?>"><?= $key ?></label></td>
-							<td>
-							<?php
-							if($key = "Raum" || "Komponentenart")
-							{
-								?><select><?php
-									foreach(ArraySelect($key) as $element)
-									{
-										echo '<option value="'.$element.'">'.$element.'</option>';
-									}
-								?></select><?php
-							}
-							else
-							{
-								if($key = "Gewährleistung")
+							<td><?php
+								if($key == "Raum" || $key == "Komponentenart")
 								{
-									$key = "Gewährleistung (in Jahren)";
+									echo'<select>';
+										foreach(ArraySelect($key) as $element)
+										{
+											echo '<option value="'.$element.'">'.$element.'</option>';
+										}
+									echo '</select>';
 								}
-								?><input type="text" name="<?= $key ?>" value="<?= $value ?>" /><?php
-							}
+								else
+								{
+									if($key = "Gewährleistung")
+									{
+										$key = "Gewährleistung (in Jahren)";
+									}
+									echo '<input type="text" name="'.$key.'" value="'.$value.'" />';
+								}
 							?></td>
 						</tr>
 						<?php
@@ -64,6 +64,7 @@ $title = "";
 						<td style="text-align: right;"><input type="submit" value="Ändern" name="create_btn" class="create_btn" /></td>
 					</tr>
 				</table>
+				<?php //include("assets/table.php"); ?>
 			</form>
 		</div>
 	</body>

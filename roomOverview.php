@@ -1,25 +1,30 @@
 <?php
   include('assets/helpers.php');
   redirectToLogin();
-  breadCrumb();
   $con = establishLinkForUser();
   $title = "Raumübersicht";
   $type= "Raum";
 
   $query = <<<SQL
-    SELECT r_nr AS Raumnummer,
-			r_bezeichnung AS Bezeichnung
+    SELECT r_id as ID,
+      r_nr AS Raumnummer,
+			r_bezeichnung AS Bezeichnung,
+      r_notiz as Notiz
 		FROM raeume;
 SQL;
 
   $result = mysqli_query($con, $query);
+  $result = mysqli_fetch_assoc($result);
 ?>
 
 <html>
  <?php include('assets/header.php'); ?>
 
   <body>
- 	<?php include('assets/nav.php'); ?>
+    <?php
+    include('assets/nav.php');
+    breadCrumb();
+    ?>
     <div id="supplierOverview">
       <h3 id="OverviewHeader">Übersicht aller Räume</h3>
 

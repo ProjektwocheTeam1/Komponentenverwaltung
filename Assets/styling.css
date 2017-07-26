@@ -1,5 +1,5 @@
 .navbar-left {
-	position: fixed;
+	position: relative;
 	width: 200px;
 	height: 100%;
 	float: left;

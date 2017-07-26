@@ -1,7 +1,6 @@
 <?php
   include('assets/helpers.php');
   redirectToLogin();
-  breadCrumb();
   $con = establishLinkForUser();
   $title = "Lieferantenübersicht";
   $type= "Lieferant";
@@ -20,13 +19,17 @@
 SQL;
 
   $result = mysqli_query($con, $query);
+  $result = mysqli_fetch_assoc($result);
 ?>
 
 <html>
  <?php include('assets/header.php'); ?>
 
   <body>
- 	<?php include('assets/nav.php'); ?>
+    <?php
+    include('assets/nav.php');
+    breadCrumb();
+    ?>
     <div id="supplierOverview">
       <h3 id="OverviewHeader">Übersicht aller Lieferanten</h3>
 
