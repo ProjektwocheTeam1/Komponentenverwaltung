@@ -75,4 +75,12 @@ function ArraySelect($key)
 
 	return $result;
 }
+
+function queryToArray($result) {
+	$tmp = array();
+	foreach ($result as $value) {
+		$tmp[] = mysqli_fetch_assoc($result);
+	}
+	return $tmp;
+}
 ?>
