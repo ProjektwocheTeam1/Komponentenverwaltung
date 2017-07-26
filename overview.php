@@ -6,6 +6,12 @@
 		$db_full = mysqli_connect('localhost', 'Full', 'Passwort12345', 'itverwaltung');//@TODO: database
 		//start login
 		//query database for user
+		$options = [
+		 'cost' => 11,
+		 'salt' => '�}��-�����mb�����r�',
+	 	];
+		$passwordhash = password_hash("admin", PASSWORD_BCRYPT,$options);
+
 		$getUserSQL = <<<SQL
 		SELECT r_bez, passwort
 		FROM rechte AS r
@@ -21,17 +27,17 @@ SQL;
 		}
 		else
 		{
-			redirectToLogin();		
+			redirectToLogin();
 		}
-		
+
 		//save user in session
 		session_start();
 		$_SESSION['user'] = $role;
 		mysqli_close($db_full);
 		//end login
-		
+
 		$db_link = establishLinkForUser();
-		
+
 		//get rooms from db
 		$rooms = array(); //from db
 	}
@@ -52,7 +58,7 @@ SQL;
 			<input type ="text" id="Csearch" name="components">
 			<input class="hidden" type="submit" value="Komponente suchen">
 		</form>
-		<?php 
+		<?php
 			foreach($rooms as $room)
 			{
 				?>

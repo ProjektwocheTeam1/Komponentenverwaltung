@@ -1,7 +1,6 @@
 <?php
   include('assets/helpers.php');
   redirectToLogin();
-  breadCrumb();
   $con = establishLinkForUser();
   $title = "Benutzerübersicht";
   $type= "Benutzer";
@@ -9,7 +8,6 @@
   $query = <<<SQL
     SELECT benutzer_id AS ID,
       username AS Benutzername,
-      passwort AS Passwort,
       rechte_id AS Rechte_ID,
       benutzervorname AS Vorname,
       benutzernachname AS Nachname
@@ -17,13 +15,17 @@
 SQL;
 
   $result = mysqli_query($con, $query);
+  $result = mysqli_fetch_assoc($result);
 ?>
 
 <html>
  <?php include('assets/header.php'); ?>
 
   <body>
- 	<?php include('assets/nav.php'); ?>
+    <?php
+    include('assets/nav.php');
+    breadCrumb();
+    ?>
     <div id="userOverview">
       <h3 id="OverviewHeader">Übersicht aller Benutzer</h3>
 
