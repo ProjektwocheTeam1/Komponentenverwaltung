@@ -1,18 +1,23 @@
 <?php
 		include("Assets/helpers.php");
-		$Con = mysqli_connect("localhost","root","","itverwaltung");
+		$Con = mysqli_connect("localhost","Full","tmx6Y9IX9UwQ2Acy","itverwaltung");
 		$query = "SELECT r_id AS ID, r_nr AS RaumNr,r_bezeichnung AS Bezeichnung, r_notiz AS Notiz FROM raeume WHERE r_id='1';";
 		$result = mysqli_query($Con,$query);
 		$data = mysqli_fetch_assoc($result);
 	// Get DB array here as $result!
 ?>
 
+<head>
+<style>
+.delete { margin-left: 6cm;}
 
+</style>
+</head>
 <html>
 	<?php include("Assets/header.php");?>
-	<body>
+	<body style="" >
 		<?php redirectToLogin(); include("Assets/nav.php");?>
-		<div>
+		<div class="delete">
 			<h2>Löschen</h2>
 			<form method="post" action="overview.php">
 				<table>
