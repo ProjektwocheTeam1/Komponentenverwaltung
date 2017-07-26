@@ -8,8 +8,8 @@
 			<li><a href="../roomOverview.php">R&auml;ume</a></li>
 			<li><a href="../userOverview.php">Benutzer</a></li>
 			<li><a href="../componentOverview.php">Komponenten</a></li>
-			<li><a href="../kindOverview.php">Komponentenarten</a></li>
-			<li><a href="../comAttrOverview.php">Komponentenattribute</a></li>
+			<li><a href="../compKindOverview.php">Komponentenarten</a></li>
+			<li><a href="../compAttrOverview.php">Komponentenattribute</a></li>
 		</ul>
 	</nav>
 </div>
