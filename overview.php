@@ -60,8 +60,8 @@ SQL;
 			{
 				?>
 				<div>
-					<a href="room.php?room=<?php echo $room_id; ?>">
-						<?php echo $room['r_bezeichnung']; ?>
+					<a href="room.php?room=<?php echo $r_id; ?>">
+						<?php echo $room['Bezeichnung']; ?>
 					</a>
 					<!-- echo Room Name -->
 				</div>
