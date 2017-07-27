@@ -30,8 +30,6 @@ switch ($type) {
 		$compKinds = getCompKindData(NULL, $con);
 		$numberText = 'Komponentennummer: '.$id;
 		$target = 'componentOverview.php';
-		var_dump($result);
-		var_dump($rooms);
 		break;
 	case 'Lieferant':
 		$result = getSupplierData($id, $con);
@@ -194,7 +192,11 @@ mysqli_close($con);
 					?>
 					<tr>
 						<td></td>
-						<td style="text-align: right;"><input type="submit" value="Ändern" name="create_btn" class="create_btn" /></td>
+						<td style="text-align: right;">
+	            <input type="hidden" name="type" value="<?php echo $type; ?>">
+	            <input type="hidden" name="id" value="<?php echo $id; ?>">
+							<input type="submit" value="Ändern" name="update_btn" class="update_btn" />
+						</td>
 					</tr>
 				</table>
 				<?php //include("assets/table.php"); ?>
