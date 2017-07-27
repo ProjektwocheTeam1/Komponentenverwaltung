@@ -23,22 +23,22 @@ if(isset($_POST['import']))
 	switch($_POST['type'])
 	{
 		case 'benutzer':
-			include('csvtomysqluser.php');
+			include('import/csvtomysqluser.php');
 			break;
 		case 'lieferant':
-			include('csvtomysqluser.php');
+			include('import/csvtomysqlsuppliers.php');
 			break;
 		case 'raeume':
-			include('csvtomysqlroom.php');
+			include('import/csvtomysqlrooms.php');
 			break;
 		case 'komponentenattribute':
-			include('csvtomysqlatributes.php');
+			include('import/csvtomysqlcomponentatributes.php');
 			break;
 		case 'komponentenarten':
-			include('csvtomysqltype.php');
+			include('import/csvtomysqlcomponenttypes.php');
 			break;
 		case 'komponenten':
-			include('csvtomysqlcomponents.php');
+			include('import/csvtomysqlcomponents.php');
 			break;
 	}
 	unlink($uploadfile);
@@ -52,9 +52,9 @@ if(isset($_POST['import']))
 		<div>
 			<form enctype="multipart/form-data" method='POST' action="import.php">
 				<label for='type'>Dateityp</label><br/>
-				<select id='type' name='type'>
 					<!-- values are database names -->
-					<option value='benutzer'>Benutzer<option>
+				<select id='type' name='type'>
+					<option value='benutzer'>Benutzer</option>
 					<option value='lieferant'>Lieferanten</option>
 					<option value='raeume'>Räume</option>
 					<option value='komponentenattribute'>Komponentenattribute</option>
@@ -117,7 +117,7 @@ if(isset($_POST['import']))
 				
 				<?php foreach($errors as $error)
 				{
-					echo $error;
+					echo "Fehler: ".$error;
 				}
 				?>
 			</div>

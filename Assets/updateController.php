@@ -51,7 +51,7 @@
 				$log = createLog($con, 'Änderung', '');
 				$updateDatabaseSQL = "
 				UPDATE lieferant
-				SET l_firmennname = '{$_POST['Firmenname']}',
+				SET l_firmenname = '{$_POST['Firmenname']}',
 					l_strasse = '{$_POST['Strasse']}',
 					l_plz = '{$_POST['PLZ']}',
 					l_ort = '{$_POST['Ort']}',
@@ -62,6 +62,8 @@
 					log_id = $log
 				WHERE l_id = {$_POST['id']};
 				";
+				var_dump($_POST);
+				var_dump($updateDatabaseSQL);
 				break;
 			case 'Benutzer':
 				$passwort = password_hash($_POST['Passwort']);
