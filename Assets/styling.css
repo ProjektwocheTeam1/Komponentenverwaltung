@@ -1,14 +1,7 @@
-body {
-	background-color: #dfdfdf;
-}
+body	 { background-color: #dfdfdf; }
+table	 { border-collapse: collapse; }
 
-table {
-	border-collapse: collapse;
-}
-
-.content {
-	max-width: 1000px;
-}
+.content { max-width: 1000px; }
 
 .logincontent {
 	position: relative;
@@ -61,6 +54,7 @@ table {
 .loginfooter {
 	position: absolute;
 	bottom: 0;
+	left: 0;
 	width: 100%;
 	z-index: 1;
 }
@@ -73,15 +67,15 @@ table {
 	display: inline;
 	padding: 0;
 	margin: 0;
-	margin-right: 10px;
-	background-color: #4466FF;
+	margin-right: 20px;
+	background-color: #0688C1;
 	color: white;
 	border-right: 1px solid grey;
 }
 
 .navlogo {
 	background-color: white;
-	border: 3px solid #4466ff;
+	border: 3px solid #0688C1;
 }
 
 .img_logo {
@@ -109,25 +103,33 @@ ul { margin: 0; }
 }
 
 .breadcrumb a {
-	color: blue;
+	color: #333333;
 }
 
 .roomTile {
+	text-decoration: none;
 	display: inline-block;
 	margin: 20px;
 	padding: 10px;
 	width: 100px;
 	height: 120px;
-	border: 2px solid darkblue;
-	background-color: #4466ff;
+	border: 2px solid grey;
+	background-color: #0688C1;
 	color: white;
-	font-weight: bold;
+	font-size: 24px;
 }
 
-.roomTile a {
+.roomTile div {
+	text-decoration: underline;
 	color: white;
+	font-weight: bold;
 }
 
 .roomTile a:hover {
 	font-weight: bold;
+}
+
+.sortable {
+	background-color: white;
+	
 }
