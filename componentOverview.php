@@ -11,9 +11,9 @@
       ka.ka_komponentenart AS Komponentenart,
       k.k_hersteller AS Hersteller,
       k.k_notiz AS Notiz,
-      k.k_gewaehrleistungsdauer AS Gewährleistung (Jahre),
+      k.k_gewaehrleistungsdauer AS Gewaehrleistung,
       k.k_einkaufsdatum AS Einkaufsdatum,
-      l.l_firmenname AS Lieferant,
+      l.l_firmenname AS Lieferant
     FROM komponenten AS k
     INNER JOIN raeume AS r
       ON k.raeume_r_id = r.r_id

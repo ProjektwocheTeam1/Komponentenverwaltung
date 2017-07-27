@@ -7,14 +7,14 @@
 
   $query = <<<SQL
     SELECT l_id AS ID,
-      l_firmennname AS Firmenname,
+      l_firmenname  AS Firmenname,
       l_strasse AS Strasse,
       l_plz AS PLZ,
       l_ort AS Ort,
       l_tel AS Tel,
       l_mobil AS Mobil,
       l_fax AS Fax,
-      l_email AS E-Mail
+      l_email AS Mail
     FROM lieferant;
 SQL;
 
