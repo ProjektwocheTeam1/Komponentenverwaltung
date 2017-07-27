@@ -52,9 +52,9 @@ if(isset($_POST['import']))
 		<div>
 			<form enctype="multipart/form-data" method='POST' action="import.php">
 				<label for='type'>Dateityp</label><br/>
-				<select id='type' name='type'>
 					<!-- values are database names -->
-					<option value='benutzer'>Benutzer<option>
+				<select id='type' name='type'>
+					<option value='benutzer'>Benutzer</option>
 					<option value='lieferant'>Lieferanten</option>
 					<option value='raeume'>Räume</option>
 					<option value='komponentenattribute'>Komponentenattribute</option>
@@ -117,7 +117,7 @@ if(isset($_POST['import']))
 				
 				<?php foreach($errors as $error)
 				{
-					echo $error;
+					echo "Fehler: ".$error;
 				}
 				?>
 			</div>
