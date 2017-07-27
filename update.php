@@ -13,9 +13,9 @@
 **/
 include("Assets/helpers.php");
 redirectToLogin();
+include ("Assets/createinsert.php");
 $con = establishLinkForUser();
-$type = $_POST['type'];
-$id = $_POST['id'];
+
 $title = 'Änderung - '.$type;
 $type_old = $type;
 $data = array();

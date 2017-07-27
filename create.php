@@ -1,4 +1,10 @@
 <?php
+/**
+* This class is the create form for the different types of objects
+* which can inserted into the database
+* @author: Dominik Berger
+* @editor: Atom
+**/
 include("Assets/helpers.php");
 	redirectToLogin();
 	$Con = establishLinkForUser();
@@ -17,6 +23,7 @@ include("Assets/helpers.php");
 				"Postleitzahl",
 				"Ort",
 				"Tel.",
+				"Mobil",
 				"Fax",
 				"Email"
 			);
@@ -68,9 +75,10 @@ include("Assets/helpers.php");
 	<?php include("Assets/header.php");?>
 	<body>
 		<?php include("Assets/nav.php");?>
+		<?= breadCrumb(); ?>
 		<div class="delete">
 			<h2>Anlegen</h2>
-			<form method="post" action="overview.php">
+			<form method="post" <?php if ($_GET['type']=="component") { ?> action="createComponentAttribute.php" <?php }else { ?> action="update.php" <?php } ?>>
 				<table>
 					<?php
 					if($_GET['type']=="component" && $rooms){
@@ -78,7 +86,7 @@ include("Assets/helpers.php");
 						<tr>
 							<td>
 								<label>Raum</label>
-								<select width="200px">
+								<select name="Raum" width="200px">
 								<?php
 								foreach($rooms as $room)
 								{
@@ -97,7 +105,7 @@ include("Assets/helpers.php");
 						<tr>
 							<td>
 								<label>Lieferant</label>
-								<select width="200px">
+								<select name="Lieferant" width="200px">
 								<?php
 								foreach($delivers as $deliver)
 								{
@@ -116,7 +124,7 @@ include("Assets/helpers.php");
 						<tr>
 							<td>
 								<label>Komponentenart</label>
-								<select width="200px">
+								<select name="Komponentenart" width="200px">
 								<?php
 								foreach($componenttypes as $componenttype)
 								{
@@ -132,18 +140,25 @@ include("Assets/helpers.php");
 					}
 					foreach($result as $key)
 					{
-						if($key != "Passwort"){
+						if(strcmp($key,"Passwort") == 0){
 							?>
 								<tr>
 									<td><label for="<?= $key ?>"><?= $key ?></label></td>
-									<td><input type="text" name="<?= $key ?>" /></td>
+									<td><input type="password" name="<?= $key ?>" /></td>
+								</tr>
+							<?php
+						}elseif(strcmp($key,"Einkaufsdatum") == 0){
+							?>
+								<tr>
+									<td><label for="<?= $key ?>"><?= $key ?></label></td>
+									<td><input type="date" name="<?= $key ?>" /></td>
 								</tr>
 							<?php
 						}else{
 							?>
 							<tr>
 								<td><label for="<?= $key ?>"><?= $key ?></label></td>
-								<td><input type="password" name="<?= $key ?>" /></td>
+								<td><input type="text" name="<?= $key ?>" /></td>
 							</tr>
 							<?php
 						}
@@ -154,8 +169,8 @@ include("Assets/helpers.php");
 						?>
 						<tr>
 							<td>
-								<label>Lieferant</label>
-								<select width="200px">
+								<label>Rechte</label>
+								<select name="Rechte" width="200px">
 								<?php
 								foreach($rights as $right)
 								{
@@ -175,6 +190,7 @@ include("Assets/helpers.php");
 						<td style="text-align: right;"><input type="submit" value="create" name="create_btn" class="create_btn" /></td>
 					</tr>
 				</table>
+				<input type="hidden" name="type" value="<?= $_GET['type'] ?>" />
 			</form>
 		</div>
 	</body>
