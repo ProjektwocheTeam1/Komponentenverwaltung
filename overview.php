@@ -55,18 +55,19 @@ SQL;
 	<?php include('Assets/nav.php'); ?>
 	<div>
 		<?php echo breadCrumb(); ?>
-		<form method="POST" action="componentOverview.php">
-			<input type ="text" id="Csearch" name="componentsearch">
-			<input class="hidden" type="submit" value="Komponente suchen">
-		</form>
+		<?php if ($_SESSION['user'] == 'Azubi' || $_SESSION['user'] == 'Systembetreuer') { ?>
+      <form action="create.php?type=component" method="POST">
+        <input type="submit" name="btnAnlegen" value="Komponente anlegen">
+      </form>
+      <?php } ?>
 		<?php
 			if(isset($rooms[0]))
 			{
 				foreach($rooms as $room)
 				{
 					?>
-					<a href="room.php?room=<?php echo $room['r_id']; ?>">
-						<div class="roomTile">
+					<a class="roomTile" href="room.php?room=<?php echo $room['r_id']; ?>">
+						<div >
 								<?php echo $room['Bezeichnung']; ?>
 						</div>
 					</a>
