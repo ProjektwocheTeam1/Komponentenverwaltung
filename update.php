@@ -13,6 +13,7 @@ $rooms = array();
 $compKinds = array();
 $result = array();
 $supplier = array();
+unset($_POST['type']);
 
 switch ($type) {
 	case 'Komponentenattribut':
@@ -172,7 +173,7 @@ mysqli_close($con);
 		<div>
 			<table>
 				<tr>
-					<td><h2><?php echo $_POST['type']; ?> ändern</h2></td>
+					<td><h2><?php echo $type_old; ?> ändern</h2></td>
 					<td style="text-align: right;"><div><?php echo $numberText ?></div></td>
 				</tr>
 			</table>
