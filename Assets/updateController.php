@@ -8,7 +8,7 @@
 	if(isset($_POST['update_btn']))
 	{
 		var_dump($_POST);
-		switch ($_POST['type']) {
+		switch ($_POST['controller']) {
 			case 'Komponentenattribut':
 				$updateDatabaseSQL = "
 				UPDATE komponentenattribute
@@ -78,6 +78,7 @@
 				break;
 		}
 		//n-m-Tabellen Pflegen
+		var_dump($updateDatabaseSQL);
 		mysqli_query($con, $updateDatabaseSQL);
 	}
 ?>
