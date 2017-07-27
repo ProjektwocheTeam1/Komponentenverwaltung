@@ -47,6 +47,7 @@ SQL;
 	$getRoomsSQL = "SELECT r_id AS r_id, r_nr AS Raumnummer, r_bezeichnung AS Bezeichnung, r_notiz AS Notiz FROM raeume;";
 	$rooms = mysqli_query($db_link, $getRoomsSQL);
 	$rooms = queryToArray($rooms);
+	mysqli_close($db_link);
 ?>
 <html>
  <?php include('Assets/header.php'); ?>
