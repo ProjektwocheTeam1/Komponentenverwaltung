@@ -12,7 +12,7 @@
 SQL;
 
   $result = mysqli_query($con, $query);
-  $result = mysqli_fetch_assoc($result);
+  $result = queryToArray($result);
 ?>
 
 <html>
@@ -26,9 +26,11 @@ SQL;
     <div id="compAttrOverview">
       <h3 id="OverviewHeader">Übersicht aller Komponentenattribute</h3>
 
+      <?php if ($_SESSION['user'] == 'Azubi' || $_SESSION['user'] == 'Systembetreuer') { ?>
       <form action="create.php?type=compAttr" method="get">
         <input type="submit" name="btnAnlegen" value="Komponentenattribute anlegen">
       </form>
+      <?php } ?>
 
       <?php if (count($result) > 0) {
         include('assets/table.php');

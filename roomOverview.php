@@ -28,9 +28,11 @@ SQL;
     <div id="supplierOverview">
       <h3 id="OverviewHeader">Übersicht aller Räume</h3>
 
+      <?php if ($_SESSION['user'] == 'Azubi' || $_SESSION['user'] == 'Systembetreuer') { ?>
       <form action="create.php?type=room" method="get">
         <input type="submit" name="btnAnlegen" value="Raum anlegen">
       </form>
+      <?php } ?>
 
       <?php if (count($result) > 0) {
         include('assets/table.php');

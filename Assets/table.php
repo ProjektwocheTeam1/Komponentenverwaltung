@@ -31,6 +31,7 @@
             <?php
           }
         }
+        if ($_SESSION['user'] == 'Azubi' || $_SESSION['user'] == 'Systembetreuer') {
         ?>
         <td>
           <form action="create.php" method="get">
@@ -55,6 +56,7 @@
         </td>
       </tr>
       <?php
+      }
     }
   ?>
 </table>

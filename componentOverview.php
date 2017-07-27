@@ -24,7 +24,7 @@
 SQL;
 
   $result = mysqli_query($con, $query);
-  $result = mysqli_fetch_assoc($result);
+  $result = queryToArray($result);
 ?>
 
 <html>
@@ -38,9 +38,11 @@ SQL;
     <div id="generalOverview">
       <h3 id="OverviewHeader">Übersicht aller Komponenten</h3>
 
+      <?php if ($_SESSION['user'] == 'Azubi' || $_SESSION['user'] == 'Systembetreuer') { ?>
       <form action="create.php" method="post">
         <input type="submit" name="btnAnlegen" value="Komponente anlegen">
       </form>
+      <?php } ?>
 
       <?php if (count($result) > 0) {
         include('assets/table.php');
