@@ -13,7 +13,6 @@ $rooms = array();
 $compKinds = array();
 $result = array();
 $supplier = array();
-unset($_POST['type']);
 
 switch ($type) {
 	case 'Komponentenattribut':
@@ -238,7 +237,7 @@ mysqli_close($con);
 					<tr>
 						<td></td>
 						<td style="text-align: right;">
-	            <input type="hidden" name="type" value="<?php echo $type_old; ?>">
+	            <input type="hidden" name="controller" value="<?php echo $type_old; ?>">
 	            <input type="hidden" name="id" value="<?php echo $id; ?>">
 							<input type="submit" value="Ändern" name="update_btn" class="update_btn" />
 						</td>
