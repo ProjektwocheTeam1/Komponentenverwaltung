@@ -8,6 +8,7 @@ $title = 'Änderung - '.$type;
 $result = array();
 $numberText = '';
 $target = '';
+$rooms = array();
 
 switch ($type) {
 	case 'Komponentenattribut':
@@ -24,9 +25,11 @@ switch ($type) {
 		break;
 	case 'Komponente':
 		$result = getComponentData($id, $con);
+		$rooms = getRoomData(NULL, $con);
 		$numberText = 'Komponentennummer: '.$id;
 		$target = 'componentOverview.php';
 		var_dump($result);
+		var_dump($rooms);
 		break;
 	case 'Lieferant':
 		$result = getSupplierData($id, $con);
@@ -78,7 +81,23 @@ SQL;
 }
 
 function getRoomData($id, $con) {
-	return '';
+	$query = <<<SQL
+	SELECT r_id as ID,
+		r_nr AS Raumnummer,
+		r_bezeichnung AS Bezeichnung,
+		r_notiz as Notiz
+	FROM raeume
+SQL;
+
+	if ($id == NULL) {
+		$query = $query.';';
+		$result = mysqli_query($con, $query);
+		return queryToArray($result);
+	} else {
+		$query = $query.' WHERE r_id = '.$id.';';
+		$result = mysqli_query($con, $query);
+		return mysqli_fetch_assoc($result);
+	}
 }
 
 function getSupplierData($id, $con) {
@@ -126,7 +145,11 @@ function getUserData($id, $con) {
 								}
 								else
 								{
-									echo '<input type="text" name="'.$key.'" value="'.$value.'" />';
+									if ($key == 'Einkaufsdatum') {
+										echo '<input type="text" name="'.$key.'" value="'.$value.'" id="datepicker" />';
+									} else {
+										echo '<input type="text" name="'.$key.'" value="'.$value.'" />';
+									}
 								}
 							?></td>
 						</tr>
