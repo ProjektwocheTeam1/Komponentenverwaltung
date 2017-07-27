@@ -30,6 +30,7 @@
 		echo "Keine Komponenten gefunden";
 	}
 	$title = "Raum".$_GET['room'];
+	mysqli_close($link);
  ?>
 <html>
  <?php include('assets/header.php'); ?>

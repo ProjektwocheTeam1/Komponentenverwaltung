@@ -90,4 +90,20 @@ function queryToArray($result) {
   }
 	return $tmp;
 }
+/**
+* Creates a log entry in db with given status and description.
+* @parameter $link: mysqli link
+* @paramenter string $status: status to be set should be 'Neu', 'Änderung' or 'Löschen'
+* @paramenter string $description: description to be set 
+* @return int: id of log entry
+* @author: Lukas Dallhammer
+**/
+function createLog($link, $status)
+{	//needs db change to default log_date to date(now)
+	$createLogWithStatus = "
+		INSERT INTO logging (log_description, log_status)
+		VALUES('$description', '$status');";
+	$query = mysqli_query($link, $createLogWithStatus);
+	return mysqli_insert_id($link);
+}
 ?>
