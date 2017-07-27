@@ -56,13 +56,13 @@ function getCompKindData($id, $con) {
 
 function getComponentData($id, $con) {
 	$query = <<<SQL
-	SELECT r.r_bezeichnung AS Raum,
+	SELECT r.r_id AS Raum,
 		l.l_firmenname AS Lieferant,
 		k.k_einkaufsdatum AS Einkaufsdatum,
 		k.k_gewaehrleistungsdauer AS Gewaehrleistung,
 		k.k_notiz AS Notiz,
 		k.k_hersteller AS Hersteller,
-		ka.ka_komponentenart AS Komponentenart
+		ka.ka_id AS Komponentenart
 	FROM komponenten AS k
 	INNER JOIN raeume AS r
 		ON k.raeume_r_id = r.r_id
@@ -107,6 +107,10 @@ function getUserData($id, $con) {
 					<?php
 					foreach($result as $key => $value)
 					{
+						if($key == "Gewaehrleistung")
+						{
+							$key = "Gewährleistung (in Jahren)";
+						}
 						?>
 						<tr>
 							<td><label for="<?= $key ?>"><?= $key ?></label></td>
@@ -122,10 +126,6 @@ function getUserData($id, $con) {
 								}
 								else
 								{
-									if($key = "Gewährleistung")
-									{
-										$key = "Gewährleistung (in Jahren)";
-									}
 									echo '<input type="text" name="'.$key.'" value="'.$value.'" />';
 								}
 							?></td>
