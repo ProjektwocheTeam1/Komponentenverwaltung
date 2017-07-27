@@ -43,19 +43,26 @@ function breadCrumb()
 	$lastEl = array_values(array_slice($urlArray, -1))[0];
 	$split = explode(".", $lastEl);
 	$currentPage = $split[0];
-
-	if(in_array($currentPage, $_SESSION['History']))
+	
+	if($currentPage != "overview")
 	{
-		$key = array_search($currentPage, $_SESSION['History']);
-		$array = array_slice($_SESSION['History'], 0, $key-1);
-		$_SESSION['History'] = $array;
+		if(in_array($currentPage, $_SESSION['History']))
+		{
+			$key = array_search($currentPage, $_SESSION['History']);
+			$array = array_slice($_SESSION['History'], 0, $key-1);
+			$_SESSION['History'] = $array;
+		}
+		else
+		{
+			$_SESSION['History'][] = $currentPage;
+		}
 	}
-	else
+	else 
 	{
-		$_SESSION['History'][] = $currentPage;
+		$_SESSION['History'] = array($currentPage);
 	}
 
-	$breadCrumb = '<div>';
+	$breadCrumb = '<div class="breadcrumb">';
 	foreach($_SESSION['History'] as $value)
 	{
 		$breadCrumb.= '<a href="'.$value.'.php">'.$value.'</a> > ';
