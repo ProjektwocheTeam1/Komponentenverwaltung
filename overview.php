@@ -48,6 +48,7 @@ SQL;
 	$rooms = mysqli_query($db_link, $getRoomsSQL);
 	$rooms = queryToArray($rooms);
 	mysqli_close($db_link);
+	$title="Start";
 ?>
 <html>
  <?php include('Assets/header.php'); ?>
