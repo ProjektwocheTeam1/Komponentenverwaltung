@@ -130,6 +130,11 @@ function getUserData($id, $con) {
 						{
 							$key = "Gewährleistung (in Jahren)";
 						}
+						if($key=='Einkaufsdatum')
+						{
+							$date = date_create($value);
+							$value = date_format($date, 'd,m,Y');
+						}
 						?>
 						<tr>
 							<td><label for="<?= $key ?>"><?= $key ?>:</label></td>

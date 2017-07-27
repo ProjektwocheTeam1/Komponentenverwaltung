@@ -148,6 +148,7 @@ ul { margin: 0; }
 }
 
 .iconBtn {
+	width: 100%;
 	text-align: center;
 	padding: 0;
 	background-color: white;
