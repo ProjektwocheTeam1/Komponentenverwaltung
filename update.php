@@ -7,6 +7,7 @@ $id = $_POST['id'];
 $title = 'Änderung - '.$type;
 $result = array();
 $numberText = '';
+$target = '';
 
 switch ($type) {
 	case 'Komponentenattribut':
@@ -24,6 +25,7 @@ switch ($type) {
 	case 'Komponente':
 		$result = getComponentData($id, $con);
 		$numberText = 'Komponentennummer: '.$id;
+		$target = 'componentOverview.php';
 		var_dump($result);
 		break;
 	case 'Lieferant':
@@ -54,14 +56,13 @@ function getCompKindData($id, $con) {
 
 function getComponentData($id, $con) {
 	$query = <<<SQL
-	SELECT k.k_id AS ID,
-		r.r_bezeichnung AS Raum,
-		ka.ka_komponentenart AS Komponentenart,
-		k.k_hersteller AS Hersteller,
-		k.k_notiz AS Notiz,
-		k.k_gewaehrleistungsdauer AS Gewaehrleistung,
+	SELECT r.r_bezeichnung AS Raum,
+		l.l_firmenname AS Lieferant,
 		k.k_einkaufsdatum AS Einkaufsdatum,
-		l.l_firmenname AS Lieferant
+		k.k_gewaehrleistungsdauer AS Gewaehrleistung,
+		k.k_notiz AS Notiz,
+		k.k_hersteller AS Hersteller,
+		ka.ka_komponentenart AS Komponentenart
 	FROM komponenten AS k
 	INNER JOIN raeume AS r
 		ON k.raeume_r_id = r.r_id
@@ -73,7 +74,7 @@ function getComponentData($id, $con) {
 SQL;
 
 	$result = mysqli_query($con, $query);
-	return queryToArray($result);
+	return mysqli_fetch_assoc($result);
 }
 
 function getRoomData($id, $con) {
@@ -101,7 +102,7 @@ function getUserData($id, $con) {
 					<td style="text-align: right;"><div><?php echo $numberText ?></div></td>
 				</tr>
 			</table>
-			<form method="post" action="overview.php">
+			<form method="post" action="<?php echo $target; ?>">
 				<table>
 					<?php
 					foreach($result as $key => $value)
