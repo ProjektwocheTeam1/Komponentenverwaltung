@@ -2,7 +2,7 @@
 /**
 * Lists components filtered for the given room.
 * Needs to be called with a GET like ?room={r_id}
-* @author: Lukas Dallhammer, Ben 
+* @author: Lukas Dallhammer, Ben
 **/
 	include('Assets/helpers.php');
 	redirectToLogin();
@@ -11,7 +11,7 @@
 
 	//For Software as component:: LEFT JOIN software_in_raum AS sir ON sir.sir_k_id=k.k_id
 	$findComponentsInRoomSQL = "
-	SELECT k_id AS Nummer, ka_komponentenart AS Komponentenart, k_notiz AS Notiz, k_hersteller AS Hersteller, k_einkaufsdatum AS Einkaufsdatum, k_gewaehrleistungsdauer AS Gewahrleistungsdauer
+	SELECT k_id AS ID, ka_komponentenart AS Komponentenart, k_notiz AS Notiz, k_hersteller AS Hersteller, k_einkaufsdatum AS Einkaufsdatum, k_gewaehrleistungsdauer AS Gewahrleistungsdauer
 	FROM komponenten AS k
 	LEFT JOIN komponentenarten AS ka ON k.komponentenarten_ka_id=ka.ka_id
 	LEFT JOIN raeume AS r ON r.r_id=k.raeume_r_id
