@@ -46,6 +46,7 @@ switch ($type) {
 	case 'Benutzer':
 		$data = getUserData($id, $con);
 		$numberText = 'Benutzernummer: '.$id;
+		$target = 'userOverview.php';
 		break;
 }
 
@@ -171,7 +172,16 @@ SQL;
 }
 
 function getUserData($id, $con) {
-	return '';
+	$query = <<<SQL
+	SELECT username AS Benutzername,
+		rechte_id AS Rechte_ID,
+		benutzervorname AS Vorname,
+		benutzernachname AS Nachname
+	FROM benutzer;
+SQL;
+
+	$result = mysqli_query($con, $query);
+	return mysqli_fetch_assoc($result);
 }
 
 mysqli_close($con);
@@ -247,6 +257,14 @@ mysqli_close($con);
 						<?php
 					}
 					?>
+					<tr>
+						<?php
+							if ($type_old == 'Benutzer') {
+								echo '<td><label for="Passwort">Passwort:</label></td>';
+								echo '<td><input type="text" name="Passwort" value="" placeholder="Passwort unverändert"/></td>';
+							}
+						?>
+					</tr>
 					<tr>
 						<td></td>
 						<td style="text-align: right;">
