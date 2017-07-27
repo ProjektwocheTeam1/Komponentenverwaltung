@@ -19,7 +19,7 @@
 				$log = createLog($con, 'Änderung', '');
 				$updateDatabaseSQL = "
 				UPDATE raeume
-				SET r_nr = {$_POST['Raum']},
+				SET r_nr = {$_POST['Raumnummer']},
 					r_bezeichnung = '{$_POST['Bezeichnung']}',
 					r_notiz = '{$_POST['Notiz']}',
 					log_id = {$log}
