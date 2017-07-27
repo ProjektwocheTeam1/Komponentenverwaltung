@@ -16,7 +16,7 @@
 				SET r_nr = {$_POST['Raumnummer']},
 					r_bezeichnung = '{$_POST['Bezeichnung']}',
 					r_notiz = '{$_POST['Notiz']}',
-					log-id = {$log}
+					log_id = {$log}
 				WHERE r_id = {$_POST['id']};
 				";
 				break;
@@ -53,7 +53,7 @@
 					l_mobil = '{$_POST['Mobil']}',
 					l_fax = '{$_POST['Fax']}',
 					l_email = '{$_POST['E-Mail']}',
-					log-id = $log
+					log_id = $log
 				WHERE l_id = {$_POST['id']};
 				";
 				break;
