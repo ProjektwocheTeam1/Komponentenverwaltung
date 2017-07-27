@@ -1,9 +1,6 @@
 <?php
-include("assets/helpers.php");
+//include("assets/helpers.php");
 
-// redirectToLogin();
-
-// establishLinkForUser();
 
 //CSV in Array einlesen
 $fp = fopen("Assets/userlist.csv", "r");
