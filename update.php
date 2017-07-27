@@ -46,7 +46,7 @@ function getCompAttrData($id, $con) {
 		SELECT kat_id as ID,
 			kat_bezeichnung as Bezeichnung
 		FROM komponentenattribute
-		WHERE kat_id = {global $id};
+		WHERE kat_id = {$id};
 SQL;
 
 	$result = mysqli_query($con, $query);
@@ -142,9 +142,12 @@ function getUserData($id, $con) {
 								if($key == "Raum" || $key == "Komponentenart")
 								{
 									echo'<select>';
-										foreach(ArraySelect($key) as $element)
-										{
-											echo '<option value="'.$element.'">'.$element.'</option>';
+										foreach ($rooms as $v) {
+											if ($v['ID'] == $value) {
+												echo '<option value="'.$v['Bezeichnung'].'"selected="selected">'.$v['Bezeichnung'].'</option>';
+											} else {
+												echo '<option value="'.$v['Bezeichnung'].'">'.$v['Bezeichnung'].'</option>';
+											}
 										}
 									echo '</select>';
 								}
