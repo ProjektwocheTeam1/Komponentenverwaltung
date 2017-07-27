@@ -8,7 +8,7 @@
   $query = <<<SQL
     SELECT k.k_id AS ID,
       r.r_bezeichnung AS Raum,
-      ka.ka_komponentenart AS Komponentenart,
+      ka.ka_komponentenart AS Art,
       k.k_hersteller AS Hersteller,
       k.k_notiz AS Notiz,
       k.k_gewaehrleistungsdauer AS Gewaehrleistung,
@@ -36,11 +36,11 @@ SQL;
     echo breadCrumb();
     ?>
     <div id="generalOverview">
-      <h3 id="OverviewHeader">Übersicht aller Komponenten</h3>
+      <h2 id="OverviewHeader">Übersicht aller Komponenten</h2>
 
       <?php if ($_SESSION['user'] == 'Azubi' || $_SESSION['user'] == 'Systembetreuer') { ?>
       <form action="create.php?type=component" method="post">
-        <input type="submit" name="btnAnlegen" value="Komponente anlegen">
+        <input class="submit_btn" type="submit" name="btnAnlegen" value="Komponente hinzufügen">
       </form>
       <?php } ?>
 

@@ -58,7 +58,7 @@ SQL;
 		<?php echo breadCrumb(); ?>
 		<?php if ($_SESSION['user'] == 'Azubi' || $_SESSION['user'] == 'Systembetreuer') { ?>
       <form action="create.php?type=component" method="POST">
-        <input type="submit" name="btnAnlegen" value="Komponente anlegen">
+        <input class="submit_btn" type="submit" name="btnAnlegen" value="Komponente hinzufügen">
       </form>
       <?php } ?>
 		<?php
@@ -69,7 +69,7 @@ SQL;
 					?>
 					<a class="roomTile" href="room.php?room=<?php echo $room['r_id']; ?>">
 						<div >
-								<?php echo $room['Bezeichnung']; ?>
+							<?php echo $room['Bezeichnung']; ?>
 						</div>
 					</a>
 					<?php
@@ -81,6 +81,5 @@ SQL;
 			}
 		?>
 	</div>
-
  </body>
 </html>
