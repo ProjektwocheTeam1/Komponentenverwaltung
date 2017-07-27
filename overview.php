@@ -65,11 +65,11 @@ SQL;
 				foreach($rooms as $room)
 				{
 					?>
-					<div>
-						<a href="room.php?room=<?php echo $room['r_id']; ?>">
-							<?php echo $room['Bezeichnung']; ?>
-						</a>
-					</div>
+					<a href="room.php?room=<?php echo $room['r_id']; ?>">
+						<div class="roomTile">
+								<?php echo $room['Bezeichnung']; ?>
+						</div>
+					</a>
 					<?php
 				}
 			}
