@@ -58,7 +58,7 @@
 					l_tel = '{$_POST['Tel']}',
 					l_mobil = '{$_POST['Mobil']}',
 					l_fax = '{$_POST['Fax']}',
-					l_email = '{$_POST['E-Mail']}',
+					l_email = '{$_POST['Mail']}',
 					log_id = $log
 				WHERE l_id = {$_POST['id']};
 				";
