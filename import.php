@@ -68,6 +68,52 @@ if(isset($_POST['import']))
 				<input type="submit" name="import" value="Importieren" />
 			</form>
 			<div>
+			Hier können Sie Ihre UTF-8 kodierten CSV Dateien hochladen.
+			Bitte geben Sie an welche Datenbankobjekte Sie importieren möchten!<br />
+			
+			Die Reihenfolge des Imports und der Attribute entnehmen Sie bitte folgender Tabelle:
+				<table>
+					<tr>
+						<td>Benutzer:</td>
+						<td>Benutzername</td>
+						<td>Passwort</td>
+						<td>Rolle(1: Lehrer, 2: Verwaltung, 3: Systembetreuer, 4: Azubi)</td>
+						<td>Vorname</td>
+						<td>nachname</td>						
+					</tr>
+					<tr>
+						<td>Lieferanten:</td>
+						<td>Firmenname</td>
+						<td>Straße mit Hausnummer</td>
+						<td>PLZ</td>
+						<td>Ort</td>
+						<td>Telefonnummer</td>
+						<td>Mobilfunknummer</td>
+						<td>Faxnummer</td>
+						<td>Email</td>
+					</tr>
+					<tr>
+						<td>Räume:</td>
+						
+					</tr>
+					<tr>
+						<td>Komponentenattribute:</td>
+						<td>Name</td>
+					</tr>
+					<tr>
+						<td>Komponentenarten:</td>
+						<td>Name</td>
+					</tr>
+					<tr>
+						<td>Komponenten:</td>
+						<td>Einkaufsdatum</td>
+						<td>Gewährleistung in Jahren</td>
+						<td>Notiz</td>
+						<td>Hersteller</td>
+					</tr>
+				</table><br />
+			Verknüpfungen müssen Sie in den Bearbeitungsansichten der jeweiligen Objekte vornehmen.
+				
 				<?php foreach($errors as $error)
 				{
 					echo $error;
