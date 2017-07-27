@@ -1,7 +1,8 @@
 <?php
-  include('assets/helpers.php');
+  include('Assets/helpers.php');
   redirectToLogin();
   $con = establishLinkForUser();
+  include('Assets/update.php');
   $title = "Komponentenattributübersicht";
   $type= "Komponentenattribut";
 

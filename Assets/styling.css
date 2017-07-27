@@ -164,3 +164,16 @@ ul { margin: 0; }
 	width: 22px;
 	height: 22px;
 }
+
+.deleteTable {
+	min-width: 300px;
+	max-width: 500px;
+}
+
+.deleteTable input {
+	width: 100%;
+}
+
+.deleteTable input[type="submit"] {
+	width: 120px;
+}
