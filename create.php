@@ -20,6 +20,18 @@ include("Assets/helpers.php");
 				"Fax",
 				"Email"
 			);
+		}elseif ($_GET['type']=="user"){
+			$result =array(
+				"Username",
+				"Passwort",
+				"Vorname",
+				"Nachname"
+			);
+			$getrightsSQL = "SELECT rechte_id AS id, r_bez AS Bezeichnung FROM rechte;";
+			$rights = mysqli_query($Con, $getrightsSQL);
+			if($rights){
+				$rights = queryToArray($rights);
+			}
 		}elseif($_GET['type']=="compKind"){
 			$result = array("Komponentenart",);
 		}
@@ -80,15 +92,6 @@ include("Assets/helpers.php");
 					</tr>
 					<?php
 				  }
-					else{
-						?>
-						<tr>
-							<td>
-								Räume sind leer
-							</td>
-						</tr>
-						<?php
-					}
 					if($_GET['type']=="component" && $delivers){
 						?>
 						<tr>
@@ -108,15 +111,6 @@ include("Assets/helpers.php");
 					</tr>
 					<?php
 					}
-					else{
-						?>
-						<tr>
-							<td>
-								Lieferanten sind leer
-							</td>
-						</tr>
-						<?php
-					}
 					if($_GET['type']=="component" && $componenttypes){
 						?>
 						<tr>
@@ -135,22 +129,44 @@ include("Assets/helpers.php");
 							</td>
 					</tr>
 					<?php
-					}	else{
+					}
+					foreach($result as $key)
+					{
+						if($key != "Passwort"){
+							?>
+								<tr>
+									<td><label for="<?= $key ?>"><?= $key ?></label></td>
+									<td><input type="text" name="<?= $key ?>" /></td>
+								</tr>
+							<?php
+						}else{
 							?>
 							<tr>
-								<td>
-									Komponentenarten sind leer
-								</td>
+								<td><label for="<?= $key ?>"><?= $key ?></label></td>
+								<td><input type="password" name="<?= $key ?>" /></td>
 							</tr>
 							<?php
 						}
-					foreach($result as $key)
-					{
+					}
 					?>
+					<?php
+					if($_GET['type']=="user" && $rights){
+						?>
 						<tr>
-							<td><label for="<?= $key ?>"><?= $key ?></label></td>
-							<td><input type="text" name="<?= $key ?>" /></td>
-						</tr>
+							<td>
+								<label>Lieferant</label>
+								<select width="200px">
+								<?php
+								foreach($rights as $right)
+								{
+								?>
+										 <option value="<?php echo($right['id']); ?>"><?php echo($right['Bezeichnung']); ?></option>
+								<?php
+								}
+								?>
+								</select>
+							</td>
+					</tr>
 					<?php
 					}
 					?>
