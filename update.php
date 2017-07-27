@@ -28,6 +28,8 @@ switch ($type) {
 	case 'Komponentenart':
 		$data = getCompKindData($id, $con);
 		$numberText = 'Komponentenartnummer: '.$id;
+		$target = 'compKindOverview.php';
+		$compKinds = $data;
 		break;
 	case 'Komponente':
 		$data = getComponentData($id, $con);
@@ -82,8 +84,7 @@ SQL;
 
 function getCompKindData($id, $con) {
 	$query = <<<SQL
-	SELECT ka_id AS ID,
-		ka_komponentenart AS Komponentenart
+	SELECT ka_komponentenart AS Komponentenart
 	FROM komponentenarten
 SQL;
 
@@ -123,7 +124,8 @@ SQL;
 
 function getRoomData($id, $con) {
 	$query = <<<SQL
-	SELECT r_nr AS Raumnummer,
+	SELECT r_id AS ID,
+		r_nr AS Raumnummer,
 		r_bezeichnung AS Bezeichnung,
 		r_notiz as Notiz
 	FROM raeume
@@ -208,10 +210,12 @@ mysqli_close($con);
 						{
 							$key = "Gewährleistung (in Jahren)";
 						}
+						if ($key != 'ID') {
 						?>
 						<tr>
 							<td><label for="<?= $key ?>"><?= $key ?>:</label></td>
 							<td><?php
+						}
 								if($key == "Raum")
 								{
 									echo '<select name="'.$key.'">';
@@ -243,6 +247,8 @@ mysqli_close($con);
 											}
 										}
 									echo '</select>';
+								} else if ($key == 'ID') {
+									# nothing to do!
 								}
 								else
 								{
