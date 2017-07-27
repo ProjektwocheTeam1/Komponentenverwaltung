@@ -1,3 +1,14 @@
+<?php
+/**
+* Generates the table dynamically.
+* There must be a $type and $result!
+* Only Azubis and Systembetreuer have access
+* to the copy, update and delete funcions!
+*
+* @author: Felix Binder
+* @editor: Atom
+**/
+?>
 <table class="sortable" border="1">
   <tr>
   <?php
@@ -23,6 +34,7 @@
         // Generate Table-Data
         foreach($v as $key => $value) {
           if ($type == 'Raum' && $key == 'Raumnummer') {
+            // Roomnumber has to be a link to the room.php
             ?>
             <td>
               <a href="room.php?room=<?php echo $v['ID']; ?>">

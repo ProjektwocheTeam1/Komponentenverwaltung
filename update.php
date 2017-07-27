@@ -1,4 +1,16 @@
 <?php
+/**
+* Shows all needed data for the update of the following modules:
+* - Komponentenattribute
+* - Komponentenarten
+* - Komponenten
+* - Lieferanten
+* - Benutzer
+* - Räume
+*
+* @author: Felix Binder
+* @editor: Atom
+**/
 include("Assets/helpers.php");
 redirectToLogin();
 $con = establishLinkForUser();
@@ -52,6 +64,15 @@ switch ($type) {
 		break;
 }
 
+/**
+* Get a specific component attribute.
+*
+* @param $id: component-attribute ID
+* @param $con: database link
+* @return assoc-array
+* @author: Felix Binder
+* @editor: Atom
+**/
 function getCompAttrData($id, $con) {
 	$query = <<<SQL
 		SELECT kat_bezeichnung AS Bezeichnung
@@ -65,6 +86,15 @@ SQL;
 
 }
 
+/**
+* Get all component attributes for one specific component.
+*
+* @param $compId: component ID
+* @param $con: database link
+* @return array with assoc-arrays
+* @author: Felix Binder
+* @editor: Atom
+**/
 function getCompAttrsForComp($compId, $con) {
 	$query = <<<SQL
 		SELECT ka.kat_id AS ID,
@@ -81,6 +111,16 @@ SQL;
 	return queryToArray($result);
 }
 
+/**
+* Get all component kinds when $id ist NULL.
+* Get one specific component kind when $id is not NULL.
+*
+* @param $id: component-kind ID, can be NULL
+* @param $con: database link
+* @return assoc-array or array with assoc-arrays
+* @author: Felix Binder
+* @editor: Atom
+**/
 function getCompKindData($id, $con) {
 	$query = <<<SQL
 	SELECT ka_komponentenart AS Komponentenart
@@ -98,6 +138,15 @@ SQL;
 	}
 }
 
+/**
+* Get one specific component.
+*
+* @param $id: component ID
+* @param $con: database link
+* @return assoc-array
+* @author: Felix Binder
+* @editor: Atom
+**/
 function getComponentData($id, $con) {
 	$query = <<<SQL
 	SELECT r.r_id AS Raum,
@@ -121,6 +170,16 @@ SQL;
 	return mysqli_fetch_assoc($result);
 }
 
+/**
+* Get all rooms when $id ist NULL.
+* Get one specific room when $id is not NULL.
+*
+* @param $id: room ID, can be NULL
+* @param $con: database link
+* @return assoc-array or array with assoc-arrays
+* @author: Felix Binder
+* @editor: Atom
+**/
 function getRoomData($id, $con) {
 	$query = <<<SQL
 	SELECT r_id AS ID,
@@ -141,6 +200,15 @@ SQL;
 	}
 }
 
+/**
+* Get one specific supplier when $id.
+*
+* @param $id: supplier ID
+* @param $con: database link
+* @return assoc-array
+* @author: Felix Binder
+* @editor: Atom
+**/
 function getSupplierData($id, $con) {
 	$query = <<<SQL
 	SELECT l_firmenname  AS Firmenname,
@@ -151,13 +219,23 @@ function getSupplierData($id, $con) {
 		l_mobil AS Mobil,
 		l_fax AS Fax,
 		l_email AS Mail
-	FROM lieferant;
+	FROM lieferant
+	WHERE l_id = {$id};
 SQL;
 
 	$result = mysqli_query($con, $query);
 	return mysqli_fetch_assoc($result);
 }
 
+/**
+* Get all suppliers for given component ID.
+*
+* @param $id: component ID
+* @param $con: database link
+* @return array with assoc-arrays
+* @author: Felix Binder
+* @editor: Atom
+**/
 function getSupplierForComp($compId, $con) {
 	$query = <<<SQL
 	SELECT l.l_id AS ID,
@@ -172,13 +250,23 @@ SQL;
 	return queryToArray($result);
 }
 
+/**
+* Get one specific user.
+*
+* @param $id: user ID
+* @param $con: database link
+* @return assoc-array
+* @author: Felix Binder
+* @editor: Atom
+**/
 function getUserData($id, $con) {
 	$query = <<<SQL
 	SELECT username AS Benutzername,
 		rechte_id AS Rechte_ID,
 		benutzervorname AS Vorname,
 		benutzernachname AS Nachname
-	FROM benutzer;
+	FROM benutzer
+	WHERE benutzer_id = {$id};
 SQL;
 
 	$result = mysqli_query($con, $query);
@@ -247,7 +335,7 @@ mysqli_close($con);
 										}
 									echo '</select>';
 								} else if ($key == 'ID') {
-									// nothing to do!
+									// hide IDs
 								}
 								else
 								{

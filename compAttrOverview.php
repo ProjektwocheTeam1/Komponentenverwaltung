@@ -1,4 +1,10 @@
 <?php
+/**
+* Lists all component-attributes.
+*
+* @author: Felix Binder
+* @editor: Atom
+**/
   include('Assets/helpers.php');
   redirectToLogin();
   $con = establishLinkForUser();
@@ -14,6 +20,7 @@ SQL;
 
   $result = mysqli_query($con, $query);
   $result = queryToArray($result);
+  mysqli_close($con);
 ?>
 
 <html>
