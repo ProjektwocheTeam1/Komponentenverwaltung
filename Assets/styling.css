@@ -130,12 +130,12 @@ ul { margin: 0; }
 }
 
 .sortable {
-	width: 600px;
+	width: 700px;
 	background-color: white;	
 }
 
 .submit_btn {
-	width: 150px;
+	/* width: 150px; */
 	height: 30px;
 	background-color: #0688C1;
 	color: white;

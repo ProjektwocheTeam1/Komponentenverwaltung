@@ -1,10 +1,13 @@
 <?php
-		include("Assets/helpers.php");
-		$Con = establishLinkForUser();
-		$query = "SELECT r_id AS ID, r_nr AS RaumNr,r_bezeichnung AS Bezeichnung, r_notiz AS Notiz FROM raeume WHERE r_id='1';";
-		$result = mysqli_query($Con,$query);
-		$data = mysqli_fetch_assoc($result);
+	include("Assets/helpers.php");
+	$Con = establishLinkForUser();
+	$query = "SELECT r_id AS ID, r_nr AS RaumNr,r_bezeichnung AS Bezeichnung, r_notiz AS Notiz FROM raeume WHERE r_id='1';";
+	$result = mysqli_query($Con,$query);
+	$data = mysqli_fetch_assoc($result);
 	// Get DB array here as $result!
+	
+	$type = $_POST['type'];
+	$title = 'L&ouml;schen - '.$type;
 ?>
 
 <head>

@@ -24,11 +24,11 @@ SQL;
     echo breadCrumb();
     ?>
     <div id="compAttrOverview">
-      <h3 id="OverviewHeader">Übersicht aller Komponentenarten</h3>
+      <h2 id="OverviewHeader">Übersicht aller Komponentenarten</h2>
 
       <?php if ($_SESSION['user'] == 'Azubi' || $_SESSION['user'] == 'Systembetreuer') { ?>
       <form action="create.php?type=compKind" method="post">
-        <input type="submit" name="btnAnlegen" value="Komponentenarten anlegen">
+        <input class="submit_btn" type="submit" name="btnAnlegen" value="Komponentenarten hinzufügen">
       </form>
       <?php } ?>
 
