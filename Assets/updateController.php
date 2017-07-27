@@ -51,7 +51,7 @@
 				$log = createLog($con, 'Änderung', '');
 				$updateDatabaseSQL = "
 				UPDATE lieferant
-				SET l_firmennname = {$_POST['Firmenname']},
+				SET l_firmennname = '{$_POST['Firmenname']}',
 					l_strasse = '{$_POST['Strasse']}',
 					l_plz = '{$_POST['PLZ']}',
 					l_ort = '{$_POST['Ort']}',
