@@ -29,7 +29,6 @@ switch ($type) {
 		$data = getCompKindData($id, $con);
 		$numberText = 'Komponentenartnummer: '.$id;
 		$target = 'compKindOverview.php';
-		$compKinds = $data;
 		break;
 	case 'Komponente':
 		$data = getComponentData($id, $con);
@@ -227,7 +226,7 @@ mysqli_close($con);
 											}
 										}
 									echo '</select>';
-								} else if ($key == "Komponentenart") {
+								} else if ($key == "Komponentenart" && count($compKinds) > 0) {
 									echo '<select name="'.$key.'">';
 										foreach ($compKinds as $v) {
 											if ($v['ID'] == $value) {
@@ -248,7 +247,7 @@ mysqli_close($con);
 										}
 									echo '</select>';
 								} else if ($key == 'ID') {
-									# nothing to do!
+									// nothing to do!
 								}
 								else
 								{
