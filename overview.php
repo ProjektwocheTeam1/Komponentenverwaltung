@@ -55,11 +55,12 @@ SQL;
  <body>
 	<?php include('Assets/nav.php'); ?>
 	<div>
-		<?php echo breadCrumb(); ?>
+		<?= breadCrumb(); ?>
 		<?php if ($_SESSION['user'] == 'Azubi' || $_SESSION['user'] == 'Systembetreuer') { ?>
-      <form action="create.php?type=component" method="POST">
-        <input class="submit_btn" type="submit" name="btnAnlegen" value="Komponente hinzufügen">
-      </form>
+		<form action="search.php" method="POST">
+			<input type ="text" id="Csearch" name="components">
+			<input class="hidden submit_btn" type="submit" value="Komponente suchen">
+		</form>
       <?php } ?>
 		<?php
 			if(isset($rooms[0]))
@@ -67,10 +68,8 @@ SQL;
 				foreach($rooms as $room)
 				{
 					?>
-					<a class="roomTile" href="room.php?room=<?php echo $room['r_id']; ?>">
-						<div >
-							<?php echo $room['Bezeichnung']; ?>
-						</div>
+					<a class="roomTile" href="room.php?room=<?= $room['r_id']; ?>">
+						<div><?= $room['Bezeichnung']; ?></div>
 					</a>
 					<?php
 				}

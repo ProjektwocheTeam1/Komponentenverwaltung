@@ -7,7 +7,6 @@
 **/
 	if(isset($_POST['update_btn']))
 	{
-		var_dump($_POST);
 		switch ($_POST['controller']) {
 			case 'Komponentenattribut':
 				$updateDatabaseSQL = "
@@ -44,7 +43,7 @@
 					k_gewaehrleistungsdauer = {$_POST['Gewährleistung_(in_Jahren)']},
 					k_notiz = '{$_POST['Notiz']}',
 					k_hersteller = '{$_POST['Hersteller']}',
-					komponentenart_ka_id = {$_POST['Komponentenart']},
+					komponentenarten_ka_id = {$_POST['Komponentenart']},
 					log_id = $log
 				WHERE k_id = {$_POST['id']};";
 				break;
@@ -52,7 +51,7 @@
 				$log = createLog($con, 'Änderung', '');
 				$updateDatabaseSQL = "
 				UPDATE lieferant
-				SET l_firmennname = {$_POST['Firmenname']},
+				SET l_firmennname = '{$_POST['Firmenname']}',
 					l_strasse = '{$_POST['Strasse']}',
 					l_plz = '{$_POST['PLZ']}',
 					l_ort = '{$_POST['Ort']}',
@@ -78,7 +77,6 @@
 				break;
 		}
 		//n-m-Tabellen Pflegen
-		var_dump($updateDatabaseSQL);
 		mysqli_query($con, $updateDatabaseSQL);
 	}
 ?>
