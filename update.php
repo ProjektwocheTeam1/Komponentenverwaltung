@@ -5,48 +5,68 @@ $con = establishLinkForUser();
 $type = $_POST['type'];
 $id = $_POST['id'];
 $title = 'Änderung - '.$type;
-$result = array();
+$data = array();
 $numberText = '';
 $target = '';
 $rooms = array();
 $compKinds = array();
+$result = array();
 
 switch ($type) {
 	case 'Komponentenattribut':
-		$result = getCompAttrData($id, $con);
+		$data = getCompAttrData($id, $con);
 		$numberText = 'Komponentenattributnummer: '.$id;
 		break;
 	case 'Raum':
-		$result = getRoomData($id, $con);
+		$data = getRoomData($id, $con);
 		$numberText = 'Raumnummer: '.$id;
 		break;
 	case 'Komponentenart':
-		$result = getCompKindData($id, $con);
+		$data = getCompKindData($id, $con);
 		$numberText = 'Komponentenartnummer: '.$id;
 		break;
 	case 'Komponente':
-		$result = getComponentData($id, $con);
+		$data = getComponentData($id, $con);
 		$rooms = getRoomData(NULL, $con);
 		$compKinds = getCompKindData(NULL, $con);
+		$result = getCompAttrsForComp($id, $con);
 		$numberText = 'Komponentennummer: '.$id;
 		$target = 'componentOverview.php';
 		break;
 	case 'Lieferant':
-		$result = getSupplierData($id, $con);
+		$data = getSupplierData($id, $con);
 		$numberText = 'Lieferantennummer: '.$id;
 		break;
 	case 'Benutzer':
-		$result = getUserData($id, $con);
+		$data = getUserData($id, $con);
 		$numberText = 'Benutzernummer: '.$id;
 		break;
 }
 
 function getCompAttrData($id, $con) {
 	$query = <<<SQL
-		SELECT kat_id as ID,
-			kat_bezeichnung as Bezeichnung
+		SELECT kat_id AS ID,
+			kat_bezeichnung AS Bezeichnung
 		FROM komponentenattribute
 		WHERE kat_id = {$id};
+SQL;
+
+	$query = $query.';';
+	$result = mysqli_query($con, $query);
+	return mysqli_fetch_assoc($result);
+
+}
+
+function getCompAttrsForComp($compId, $con) {
+	$query = <<<SQL
+		SELECT ka.kat_id AS ID,
+			ka.kat_bezeichnung AS Bezeichnung
+		FROM komponentenattribute AS ka
+		INNER JOIN komponente_hat_attribute AS kha
+			ON ka.kat_id = kha.komponentenattribute_kat_id
+		INNER JOIN komponenten AS k
+			ON kha.komponenten_k_id = k.k_id
+		WHERE k.k_id = {$compId};
 SQL;
 
 	$result = mysqli_query($con, $query);
@@ -140,7 +160,7 @@ mysqli_close($con);
 			<form method="post" action="<?php echo $target; ?>">
 				<table>
 					<?php
-					foreach($result as $key => $value)
+					foreach($data as $key => $value)
 					{
 						if($key == "Gewaehrleistung")
 						{
@@ -157,20 +177,20 @@ mysqli_close($con);
 							<td><?php
 								if($key == "Raum")
 								{
-									echo '<select>';
+									echo '<select name="'.$key.'">';
 										foreach ($rooms as $v) {
 											if ($v['ID'] == $value) {
-												echo '<option value="'.$v['Bezeichnung'].'"selected="selected">'.$v['Bezeichnung'].'</option>';
+												echo '<option value="'.$v['Bezeichnung'].'" selected="selected">'.$v['Bezeichnung'].'</option>';
 											} else {
 												echo '<option value="'.$v['Bezeichnung'].'">'.$v['Bezeichnung'].'</option>';
 											}
 										}
 									echo '</select>';
 								} else if ($key == "Komponentenart") {
-									echo '<select>';
+									echo '<select name="'.$key.'">';
 										foreach ($compKinds as $v) {
 											if ($v['ID'] == $value) {
-												echo '<option value="'.$v['Komponentenart'].'"selected="selected">'.$v['Komponentenart'].'</option>';
+												echo '<option value="'.$v['Komponentenart'].'" selected="selected">'.$v['Komponentenart'].'</option>';
 											} else {
 												echo '<option value="'.$v['Komponentenart'].'">'.$v['Komponentenart'].'</option>';
 											}
@@ -199,7 +219,7 @@ mysqli_close($con);
 						</td>
 					</tr>
 				</table>
-				<?php //include("assets/table.php"); ?>
+				<?php include("Assets/table.php"); ?>
 			</form>
 		</div>
 	</body>
