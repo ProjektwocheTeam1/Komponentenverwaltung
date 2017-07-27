@@ -7,7 +7,12 @@
       <th><?php echo $key; ?></th>
       <?php
     }
+    if ($_SESSION['user'] == 'Azubi' || $_SESSION['user'] == 'Systembetreuer') {
   ?>
+    <th>Kopieren</th>
+    <th>Ändern</th>
+    <th>Löschen</th>
+  <?php } ?>
   </tr>
 
   <?php
