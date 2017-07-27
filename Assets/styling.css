@@ -147,9 +147,11 @@ ul { margin: 0; }
 	cursor: pointer;
 }
 
-.iconDiv {
+.iconBtn {
 	text-align: center;
 	padding: 0;
+	background-color: white;
+	border: none;
 }
 
 .tableIcon {
