@@ -192,7 +192,11 @@ mysqli_close($con);
 					?>
 					<tr>
 						<td></td>
-						<td style="text-align: right;"><input type="submit" value="Ändern" name="update_btn" class="update_btn" /></td>
+						<td style="text-align: right;">
+	            <input type="hidden" name="type" value="<?php echo $type; ?>">
+	            <input type="hidden" name="id" value="<?php echo $id; ?>">
+							<input type="submit" value="Ändern" name="update_btn" class="update_btn" />
+						</td>
 					</tr>
 				</table>
 				<?php //include("assets/table.php"); ?>
