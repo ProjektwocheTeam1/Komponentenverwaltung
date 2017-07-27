@@ -27,7 +27,7 @@ SQL;
       <h3 id="OverviewHeader">Übersicht aller Komponentenattribute</h3>
 
       <?php if ($_SESSION['user'] == 'Azubi' || $_SESSION['user'] == 'Systembetreuer') { ?>
-      <form action="create.php?type=compAttr" method="get">
+      <form action="create.php?type=compAttr" method="post">
         <input type="submit" name="btnAnlegen" value="Komponentenattribute anlegen">
       </form>
       <?php } ?>

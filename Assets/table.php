@@ -34,21 +34,21 @@
         if ($_SESSION['user'] == 'Azubi' || $_SESSION['user'] == 'Systembetreuer') {
         ?>
         <td>
-          <form action="create.php" method="get">
+          <form action="create.php" method="post">
             <input type="hidden" name="type" value="<?php echo $type; ?>">
             <input type="hidden" name="id" value="<?php echo $v['ID']; ?>">
             <input type="submit" name="btnCopy" value="Kopieren">
           </form>
         </td>
         <td>
-          <form action="update.php" method="get">
+          <form action="update.php" method="post">
             <input type="hidden" name="type" value="<?php echo $type; ?>">
             <input type="hidden" name="id" value="<?php echo $v['ID']; ?>">
             <input type="submit" name="btnConfig" value="Konfigurieren">
           </form>
         </td>
         <td>
-          <form action="delete.php" method="get">
+          <form action="delete.php" method="post">
             <input type="hidden" name="type" value="<?php echo $type ?>">
             <input type="hidden" name="id" value="<?php echo $v['ID']; ?>">
             <input type="submit" name="btnDelete" value="Löschen">

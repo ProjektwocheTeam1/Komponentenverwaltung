@@ -30,7 +30,7 @@ SQL;
       <h3 id="OverviewHeader">Übersicht aller Benutzer</h3>
 
       <?php if ($_SESSION['user'] == 'Azubi' || $_SESSION['user'] == 'Systembetreuer') { ?>
-      <form action="create.php?type=user" method="get">
+      <form action="create.php?type=user" method="post">
         <input type="submit" name="btnAnlegen" value="Benutzer anlegen">
       </form>
       <?php } ?>

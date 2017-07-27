@@ -27,7 +27,7 @@ SQL;
       <h3 id="OverviewHeader">Übersicht aller Komponentenarten</h3>
 
       <?php if ($_SESSION['user'] == 'Azubi' || $_SESSION['user'] == 'Systembetreuer') { ?>
-      <form action="create.php?type=compKind" method="get">
+      <form action="create.php?type=compKind" method="post">
         <input type="submit" name="btnAnlegen" value="Komponentenarten anlegen">
       </form>
       <?php } ?>
