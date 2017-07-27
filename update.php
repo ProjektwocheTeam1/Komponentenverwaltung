@@ -10,60 +10,81 @@ $numberText = '';
 
 switch ($type) {
 	case 'Komponentenattribut':
-		$result = getCompAttrData();
-		$numberText = 'Komponentenattributnummer: ';
+		$result = getCompAttrData($id, $con);
+		$numberText = 'Komponentenattributnummer: '.$id;
 		break;
 	case 'Raum':
-		$result = getRoomData();
-		$numberText = 'Raumnummer: ';
+		$result = getRoomData($id, $con);
+		$numberText = 'Raumnummer: '.$id;
 		break;
 	case 'Komponentenart':
-		$result = getCompKindData();
-		$numberText = 'Komponentenartnummer: ';
+		$result = getCompKindData($id, $con);
+		$numberText = 'Komponentenartnummer: '.$id;
 		break;
 	case 'Komponente':
-		$result = getComponentData();
-		$numberText = 'Komponentennummer: ';
+		$result = getComponentData($id, $con);
+		$numberText = 'Komponentennummer: '.$id;
+		var_dump($result);
 		break;
 	case 'Lieferant':
-		$result = getSupplierData();
-		$numberText = 'Lieferantennummer: ';
+		$result = getSupplierData($id, $con);
+		$numberText = 'Lieferantennummer: '.$id;
 		break;
 	case 'Benutzer':
-		$result = getUserData();
-		$numberText = 'Benutzernummer: ';
+		$result = getUserData($id, $con);
+		$numberText = 'Benutzernummer: '.$id;
 		break;
 }
 
-function getCompAttrData() {
+function getCompAttrData($id, $con) {
 	$query = <<<SQL
 		SELECT kat_id as ID,
 			kat_bezeichnung as Bezeichnung
 		FROM komponentenattribute
-		WHERE kat_id = {$id};
+		WHERE kat_id = {global $id};
 SQL;
 
 	$result = mysqli_query($con, $query);
-	return mysqli_fetch_assoc($result);
+	return queryToArray($result);
 }
 
-function getCompKindData() {
+function getCompKindData($id, $con) {
 	return '';
 }
 
-function getComponentData() {
+function getComponentData($id, $con) {
+	$query = <<<SQL
+	SELECT k.k_id AS ID,
+		r.r_bezeichnung AS Raum,
+		ka.ka_komponentenart AS Komponentenart,
+		k.k_hersteller AS Hersteller,
+		k.k_notiz AS Notiz,
+		k.k_gewaehrleistungsdauer AS Gewaehrleistung,
+		k.k_einkaufsdatum AS Einkaufsdatum,
+		l.l_firmenname AS Lieferant
+	FROM komponenten AS k
+	INNER JOIN raeume AS r
+		ON k.raeume_r_id = r.r_id
+	INNER JOIN lieferant AS l
+		ON k.lieferant_l_id = l.l_id
+	INNER JOIN komponentenarten AS ka
+		ON k.komponentenarten_ka_id = ka.ka_id
+	WHERE k.k_id = {$id};
+SQL;
+
+	$result = mysqli_query($con, $query);
+	return queryToArray($result);
+}
+
+function getRoomData($id, $con) {
 	return '';
 }
 
-function getRoomData() {
+function getSupplierData($id, $con) {
 	return '';
 }
 
-function getSupplierData() {
-	return '';
-}
-
-function getUserData() {
+function getUserData($id, $con) {
 	return '';
 }
 ?>
@@ -76,7 +97,7 @@ function getUserData() {
 		<div>
 			<table>
 				<tr>
-					<td><h2><?php echo $title; ?> ändern</h2></td>
+					<td><h2><?php echo $_POST['type']; ?> ändern</h2></td>
 					<td style="text-align: right;"><div><?php echo $numberText ?></div></td>
 				</tr>
 			</table>
