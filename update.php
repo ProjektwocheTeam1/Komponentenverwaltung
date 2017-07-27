@@ -113,7 +113,7 @@ function getUserData($id, $con) {
 						}
 						?>
 						<tr>
-							<td><label for="<?= $key ?>"><?= $key ?></label></td>
+							<td><label for="<?= $key ?>"><?= $key ?>:</label></td>
 							<td><?php
 								if($key == "Raum" || $key == "Komponentenart")
 								{
