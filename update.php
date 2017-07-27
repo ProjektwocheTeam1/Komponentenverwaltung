@@ -2,16 +2,70 @@
 include("Assets/helpers.php");
 redirectToLogin();
 $con = establishLinkForUser();
+$type = $_POST['type'];
+$id = $_POST['id'];
+$title = 'Änderung - '.$type;
+$result = array();
+$numberText = '';
 
-$result = array(
-	"Name" => "Taner",
-	"Nachname" => "Deniz",
-	"Passwort" => "Test123"
-);
-// Get DB array here as $result!
-	
-// $id = $_GET['id'];
-$title = "";
+switch ($type) {
+	case 'Komponentenattribut':
+		$result = getCompAttrData();
+		$numberText = 'Komponentenattributnummer: ';
+		break;
+	case 'Raum':
+		$result = getRoomData();
+		$numberText = 'Raumnummer: ';
+		break;
+	case 'Komponentenart':
+		$result = getCompKindData();
+		$numberText = 'Komponentenartnummer: ';
+		break;
+	case 'Komponente':
+		$result = getComponentData();
+		$numberText = 'Komponentennummer: ';
+		break;
+	case 'Lieferant':
+		$result = getSupplierData();
+		$numberText = 'Lieferantennummer: ';
+		break;
+	case 'Benutzer':
+		$result = getUserData();
+		$numberText = 'Benutzernummer: ';
+		break;
+}
+
+function getCompAttrData() {
+	$query = <<<SQL
+		SELECT kat_id as ID,
+			kat_bezeichnung as Bezeichnung
+		FROM komponentenattribute
+		WHERE kat_id = {$id};
+SQL;
+
+	$result = mysqli_query($con, $query);
+	return mysqli_fetch_assoc($result);
+}
+
+function getCompKindData() {
+	return '';
+}
+
+function getComponentData() {
+	return '';
+}
+
+function getRoomData() {
+	return '';
+}
+
+function getSupplierData() {
+	return '';
+}
+
+function getUserData() {
+	return '';
+}
 ?>
 
 <html>
@@ -22,8 +76,8 @@ $title = "";
 		<div>
 			<table>
 				<tr>
-					<td><h2>Komponente ändern</h2></td>
-					<td style="text-align: right;"><div>Komponentennummer: </div></td>
+					<td><h2><?php echo $title; ?> ändern</h2></td>
+					<td style="text-align: right;"><div><?php echo $numberText ?></div></td>
 				</tr>
 			</table>
 			<form method="post" action="overview.php">
