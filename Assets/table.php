@@ -42,7 +42,7 @@
           <form action="create.php" method="post">
             <input type="hidden" name="type" value="<?php echo $type; ?>">
             <input type="hidden" name="id" value="<?php echo $v['ID']; ?>">
-            <div class="iconDiv"><img src="Assets/img/Copy.png" class="tableIcon" onclick="submit();"/></div>
+            <button type="submit" class="iconDiv"><img src="Assets/img/Copy.png" class="tableIcon"/></button>
 			<!--<input type="submit" name="btnCopy" value="Kopieren">-->
           </form>
         </td>
