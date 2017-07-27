@@ -3,4 +3,5 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="Assets/styling.css">
 	<script src="Assets/sorttable.js"></script>
+	<title><?php echo $title; ?></title>
 </head>
