@@ -114,7 +114,7 @@ function getUserData($id, $con) {
 						if($key=='Einkaufsdatum')
 						{
 							$date = date_create($value);
-							$value = date_format($date, 'd,m,Y');
+							$value = date_format($date, 'd.m.Y');
 						}
 						?>
 						<tr>
