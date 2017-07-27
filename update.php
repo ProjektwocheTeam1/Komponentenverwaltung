@@ -41,6 +41,7 @@ switch ($type) {
 	case 'Lieferant':
 		$data = getSupplierData($id, $con);
 		$numberText = 'Lieferantennummer: '.$id;
+		$target = 'supplierOverview.php';
 		break;
 	case 'Benutzer':
 		$data = getUserData($id, $con);
@@ -50,8 +51,7 @@ switch ($type) {
 
 function getCompAttrData($id, $con) {
 	$query = <<<SQL
-		SELECT kat_id AS ID,
-			kat_bezeichnung AS Bezeichnung
+		SELECT kat_bezeichnung AS Bezeichnung
 		FROM komponentenattribute
 		WHERE kat_id = {$id};
 SQL;
@@ -140,7 +140,20 @@ SQL;
 }
 
 function getSupplierData($id, $con) {
-	return '';
+	$query = <<<SQL
+	SELECT l_firmenname  AS Firmenname,
+		l_strasse AS Strasse,
+		l_plz AS PLZ,
+		l_ort AS Ort,
+		l_tel AS Tel,
+		l_mobil AS Mobil,
+		l_fax AS Fax,
+		l_email AS Mail
+	FROM lieferant;
+SQL;
+
+	$result = mysqli_query($con, $query);
+	return mysqli_fetch_assoc($result);
 }
 
 function getSupplierForComp($compId, $con) {
