@@ -39,7 +39,7 @@ SQL;
       <h3 id="OverviewHeader">Übersicht aller Komponenten</h3>
 
       <?php if ($_SESSION['user'] == 'Azubi' || $_SESSION['user'] == 'Systembetreuer') { ?>
-      <form action="create.php" method="post">
+      <form action="create.php?type=component" method="post">
         <input type="submit" name="btnAnlegen" value="Komponente anlegen">
       </form>
       <?php } ?>

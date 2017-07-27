@@ -43,7 +43,7 @@ function breadCrumb()
 	$lastEl = array_values(array_slice($urlArray, -1))[0];
 	$split = explode(".", $lastEl);
 	$currentPage = $split[0];
-	
+
 	if($currentPage != "overview")
 	{
 		if(in_array($currentPage, $_SESSION['History']))
@@ -57,7 +57,7 @@ function breadCrumb()
 			$_SESSION['History'][] = $currentPage;
 		}
 	}
-	else 
+	else
 	{
 		$_SESSION['History'] = array($currentPage);
 	}
@@ -83,6 +83,12 @@ function ArraySelect($key)
 	return $result;
 }
 
+/**
+* Converts the query-result to an assoc arrays
+* @param $result: mysqli result
+* @return array: array with assoc-arrays
+* @author: Felix Binder
+**/
 function queryToArray($result) {
 	$tmp = array();
 	while($row = mysqli_fetch_assoc($result)) {
@@ -92,13 +98,13 @@ function queryToArray($result) {
 }
 /**
 * Creates a log entry in db with given status and description.
-* @parameter $link: mysqli link
-* @paramenter string $status: status to be set should be 'Neu', 'Änderung' or 'Löschen'
-* @paramenter string $description: description to be set 
+* @param $link: mysqli link
+* @param string $status: status to be set should be 'Neu', 'Änderung' or 'Löschen'
+* @param string $description: description to be set
 * @return int: id of log entry
 * @author: Lukas Dallhammer
 **/
-function createLog($link, $status)
+function createLog($link, $status = '', $description = '')
 {	//needs db change to default log_date to date(now)
 	$createLogWithStatus = "
 		INSERT INTO logging (log_description, log_status)
