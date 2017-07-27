@@ -5,17 +5,20 @@ $con = establishLinkForUser();
 $type = $_POST['type'];
 $id = $_POST['id'];
 $title = 'Änderung - '.$type;
+$type_old = $type;
 $data = array();
 $numberText = '';
 $target = '';
 $rooms = array();
 $compKinds = array();
 $result = array();
+$supplier = array();
 
 switch ($type) {
 	case 'Komponentenattribut':
 		$data = getCompAttrData($id, $con);
 		$numberText = 'Komponentenattributnummer: '.$id;
+		$target = 'compAttrOverview.php';
 		break;
 	case 'Raum':
 		$data = getRoomData($id, $con);
@@ -30,8 +33,10 @@ switch ($type) {
 		$rooms = getRoomData(NULL, $con);
 		$compKinds = getCompKindData(NULL, $con);
 		$result = getCompAttrsForComp($id, $con);
+		$supplier = getSupplierForComp($id, $con);
 		$numberText = 'Komponentennummer: '.$id;
 		$target = 'componentOverview.php';
+		$type = "Komponentenattribut";
 		break;
 	case 'Lieferant':
 		$data = getSupplierData($id, $con);
@@ -138,6 +143,20 @@ function getSupplierData($id, $con) {
 	return '';
 }
 
+function getSupplierForComp($compId, $con) {
+	$query = <<<SQL
+	SELECT l.l_id AS ID,
+		l.l_firmenname AS Firmenname
+	FROM lieferant AS l
+	INNER JOIN komponenten AS k
+		ON l.l_id = k.lieferant_l_id
+	WHERE k.k_id = {$compId};
+SQL;
+
+	$result = mysqli_query($con, $query);
+	return queryToArray($result);
+}
+
 function getUserData($id, $con) {
 	return '';
 }
@@ -148,7 +167,7 @@ mysqli_close($con);
 <html>
 	<?php include("Assets/header.php");?>
 	<body>
-		<?php include('assets/nav.php'); ?>
+		<?php include('Assets/nav.php'); ?>
 		<?= breadCrumb(); ?>
 		<div>
 			<table>
@@ -166,11 +185,6 @@ mysqli_close($con);
 						{
 							$key = "Gewährleistung (in Jahren)";
 						}
-						// if($key=='Einkaufsdatum')
-						// {
-							// $date = date_create($value);
-							// $value = date_format($date, 'd.m.Y');
-						// }
 						?>
 						<tr>
 							<td><label for="<?= $key ?>"><?= $key ?>:</label></td>
@@ -180,9 +194,9 @@ mysqli_close($con);
 									echo '<select name="'.$key.'">';
 										foreach ($rooms as $v) {
 											if ($v['ID'] == $value) {
-												echo '<option value="'.$v['Bezeichnung'].'" selected="selected">'.$v['Bezeichnung'].'</option>';
+												echo '<option value="'.$v['ID'].'" selected="selected">'.$v['Bezeichnung'].'</option>';
 											} else {
-												echo '<option value="'.$v['Bezeichnung'].'">'.$v['Bezeichnung'].'</option>';
+												echo '<option value="'.$v['ID'].'">'.$v['Bezeichnung'].'</option>';
 											}
 										}
 									echo '</select>';
@@ -190,9 +204,19 @@ mysqli_close($con);
 									echo '<select name="'.$key.'">';
 										foreach ($compKinds as $v) {
 											if ($v['ID'] == $value) {
-												echo '<option value="'.$v['Komponentenart'].'" selected="selected">'.$v['Komponentenart'].'</option>';
+												echo '<option value="'.$v['ID'].'" selected="selected">'.$v['Komponentenart'].'</option>';
 											} else {
-												echo '<option value="'.$v['Komponentenart'].'">'.$v['Komponentenart'].'</option>';
+												echo '<option value="'.$v['ID'].'">'.$v['Komponentenart'].'</option>';
+											}
+										}
+									echo '</select>';
+								} else if ($key == "Lieferant") {
+									echo '<select name="'.$key.'">';
+										foreach ($supplier as $v) {
+											if ($v['ID'] == $value) {
+												echo '<option value="'.$v['ID'].'" selected="selected">'.$v['Firmenname'].'</option>';
+											} else {
+												echo '<option value="'.$v['ID'].'">'.$v['Firmenname'].'</option>';
 											}
 										}
 									echo '</select>';
@@ -213,13 +237,23 @@ mysqli_close($con);
 					<tr>
 						<td></td>
 						<td style="text-align: right;">
-	            <input type="hidden" name="type" value="<?php echo $type; ?>">
+	            <input type="hidden" name="type" value="<?php echo $type_old; ?>">
 	            <input type="hidden" name="id" value="<?php echo $id; ?>">
 							<input type="submit" value="Ändern" name="update_btn" class="update_btn" />
 						</td>
 					</tr>
 				</table>
-				<?php include("Assets/table.php"); ?>
+				<?php
+				if ($type_old == 'Komponente') {
+					if (count($result) > 0) {
+						include("Assets/table.php");
+					} else {
+						?>
+						<div>Keine Komponenten vorhanden!</div>
+						<?php
+					}
+				}
+				?>
 			</form>
 		</div>
 	</body>
