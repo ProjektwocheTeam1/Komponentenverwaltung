@@ -30,7 +30,7 @@ SQL;
 
       <?php if ($_SESSION['user'] == 'Azubi' || $_SESSION['user'] == 'Systembetreuer') { ?>
       <form action="create.php?type=room" method="post">
-        <input class="submit_btn" type="submit" name="btnAnlegen" value="Raum anlegen">
+        <input class="submit_btn" type="submit" name="btnAnlegen" value="Raum hinzufügen">
       </form>
       <?php } ?>
 

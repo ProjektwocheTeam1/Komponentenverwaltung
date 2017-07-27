@@ -27,11 +27,11 @@ SQL;
     echo breadCrumb();
     ?>
     <div id="userOverview">
-      <h3 id="OverviewHeader">Übersicht aller Benutzer</h3>
+      <h2 id="OverviewHeader">Übersicht aller Benutzer</h2>
 
       <?php if ($_SESSION['user'] == 'Azubi' || $_SESSION['user'] == 'Systembetreuer') { ?>
       <form action="create.php?type=user" method="post">
-        <input type="submit" name="btnAnlegen" value="Benutzer anlegen">
+        <input class="submit_btn" type="submit" name="btnAnlegen" value="Benutzer hinzufügen">
       </form>
       <?php } ?>
 

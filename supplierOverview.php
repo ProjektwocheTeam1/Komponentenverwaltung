@@ -31,11 +31,11 @@ SQL;
     echo breadCrumb();
     ?>
     <div id="supplierOverview">
-      <h3 id="OverviewHeader">Übersicht aller Lieferanten</h3>
+      <h2 id="OverviewHeader">Übersicht aller Lieferanten</h2>
 
       <?php if ($_SESSION['user'] == 'Azubi' || $_SESSION['user'] == 'Systembetreuer') { ?>
       <form action="create.php?type=supplier" method="post">
-        <input type="submit" name="btnAnlegen" value="Lieferanten anlegen">
+        <input class="submit_btn" type="submit" name="btnAnlegen" value="Lieferanten hinzufügen">
       </form>
       <?php } ?>
 
