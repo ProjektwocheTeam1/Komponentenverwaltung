@@ -7,6 +7,7 @@
 **/
 	if(isset($_POST['update_btn']))
 	{
+		var_dump($_POST);
 		switch ($_POST['type']) {
 			case 'Komponentenattribut':
 				$updateDatabaseSQL = "
@@ -19,7 +20,7 @@
 				$log = createLog($con, 'Änderung', '');
 				$updateDatabaseSQL = "
 				UPDATE raeume
-				SET r_nr = {$_POST['Raumnummer']},
+				SET r_nr = {$_POST['Raum']},
 					r_bezeichnung = '{$_POST['Bezeichnung']}',
 					r_notiz = '{$_POST['Notiz']}',
 					log_id = {$log}
@@ -37,10 +38,10 @@
 				$log = createLog($con, 'Änderung', '');
 				$updateDatabaseSQL = "
 				UPDATE komponenten
-				SET raeume_r_id = {$_POST['Raumnummer']},
+				SET raeume_r_id = {$_POST['Raum']},
 					lieferant_l_id = {$_POST['Lieferant']},
 					k_einkaufsdatum = '{$_POST['Einkaufsdatum']}',
-					k_gewaehrleistungsdauer = {$_POST['Gewaehrleistungsdauer']},
+					k_gewaehrleistungsdauer = {$_POST['Gewährleistung_(in_Jahren)']},
 					k_notiz = '{$_POST['Notiz']}',
 					k_hersteller = '{$_POST['Hersteller']}',
 					komponentenart_ka_id = {$_POST['Komponentenart']},

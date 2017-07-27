@@ -2,7 +2,7 @@
   include('assets/helpers.php');
   redirectToLogin();
   $con = establishLinkForUser();
-  include('Assets/update.php');
+  include('Assets/updateController.php');
   $title = "Raumübersicht";
   $type= "Raum";
 

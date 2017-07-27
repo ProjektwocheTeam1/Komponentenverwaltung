@@ -43,7 +43,7 @@
 			<input type="submit" value="Komponente anlegen" >
 		</form>
 		<?php
-			$type='Raum'; //needs to be set for table.php
+			$type='Komponente'; //needs to be set for table.php
 			if(isset($result[0]))
 			{
 				include('assets/table.php');
