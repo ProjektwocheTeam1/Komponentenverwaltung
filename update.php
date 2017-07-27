@@ -9,6 +9,7 @@ $result = array();
 $numberText = '';
 $target = '';
 $rooms = array();
+$compKinds = array();
 
 switch ($type) {
 	case 'Komponentenattribut':
@@ -26,6 +27,7 @@ switch ($type) {
 	case 'Komponente':
 		$result = getComponentData($id, $con);
 		$rooms = getRoomData(NULL, $con);
+		$compKinds = getCompKindData(NULL, $con);
 		$numberText = 'Komponentennummer: '.$id;
 		$target = 'componentOverview.php';
 		var_dump($result);
@@ -54,7 +56,21 @@ SQL;
 }
 
 function getCompKindData($id, $con) {
-	return '';
+	$query = <<<SQL
+	SELECT ka_id AS ID,
+		ka_komponentenart AS Komponentenart
+	FROM komponentenarten
+SQL;
+
+	if ($id == NULL) {
+		$query = $query.';';
+		$result = mysqli_query($con, $query);
+		return queryToArray($result);
+	} else {
+		$query = $query.' WHERE ka_id = '.$id.';';
+		$result = mysqli_query($con, $query);
+		return mysqli_fetch_assoc($result);
+	}
 }
 
 function getComponentData($id, $con) {
@@ -107,6 +123,8 @@ function getSupplierData($id, $con) {
 function getUserData($id, $con) {
 	return '';
 }
+
+mysqli_close($con);
 ?>
 
 <html>
@@ -139,14 +157,24 @@ function getUserData($id, $con) {
 						<tr>
 							<td><label for="<?= $key ?>"><?= $key ?>:</label></td>
 							<td><?php
-								if($key == "Raum" || $key == "Komponentenart")
+								if($key == "Raum")
 								{
-									echo'<select>';
+									echo '<select>';
 										foreach ($rooms as $v) {
 											if ($v['ID'] == $value) {
 												echo '<option value="'.$v['Bezeichnung'].'"selected="selected">'.$v['Bezeichnung'].'</option>';
 											} else {
 												echo '<option value="'.$v['Bezeichnung'].'">'.$v['Bezeichnung'].'</option>';
+											}
+										}
+									echo '</select>';
+								} else if ($key == "Komponentenart") {
+									echo '<select>';
+										foreach ($compKinds as $v) {
+											if ($v['ID'] == $value) {
+												echo '<option value="'.$v['Komponentenart'].'"selected="selected">'.$v['Komponentenart'].'</option>';
+											} else {
+												echo '<option value="'.$v['Komponentenart'].'">'.$v['Komponentenart'].'</option>';
 											}
 										}
 									echo '</select>';
