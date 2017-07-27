@@ -51,7 +51,7 @@ if(isset($_POST['import']))
 		<?php echo breadCrumb(); ?>
 		<div>
 			<form enctype="multipart/form-data" method='POST' action="import.php">
-				<label for='type'>Dateityp</label>
+				<label for='type'>Dateityp</label><br/>
 				<select id='type' name='type'>
 					<!-- values are database names -->
 					<option value='benutzer'>Benutzer<option>
@@ -60,11 +60,12 @@ if(isset($_POST['import']))
 					<option value='komponentenattribute'>Komponentenattribute</option>
 					<option value='komponentenarten'>Komponentenarten</option>
 					<option value='komponenten'>Komponenten</option>
-				</select>
+				</select><br/><br/>
 				<!-- MAX_FILE_SIZE muss vor dem Dateiupload Input Feld stehen -->
 				<input type="hidden" name="MAX_FILE_SIZE" value="30000" />
 				<!-- Der Name des Input Felds bestimmt den Namen im $_FILES Array -->
-				Diese Datei hochladen: <input name="userfile" type="file" />
+				Diese Datei hochladen: <br/>
+				<input name="userfile" type="file" /><br/>
 				<input type="submit" name="import" value="Importieren" />
 			</form>
 			<div>
