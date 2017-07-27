@@ -1,4 +1,10 @@
 <?php
+/**
+* Update Controller. Writes updates to db.
+* $con is mysqli link
+*  requires helpers.php to be included before.
+* @author: Lukas Dallhammer
+**/
 	if(isset($_POST['update_btn']))
 	{
 		switch ($_POST['type']) {
