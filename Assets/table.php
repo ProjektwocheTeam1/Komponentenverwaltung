@@ -7,7 +7,12 @@
       <th><?php echo $key; ?></th>
       <?php
     }
+    if ($_SESSION['user'] == 'Azubi' || $_SESSION['user'] == 'Systembetreuer') {
   ?>
+    <th>Kopieren</th>
+    <th>Ändern</th>
+    <th>Löschen</th>
+  <?php } ?>
   </tr>
 
   <?php
@@ -37,21 +42,24 @@
           <form action="create.php" method="post">
             <input type="hidden" name="type" value="<?php echo $type; ?>">
             <input type="hidden" name="id" value="<?php echo $v['ID']; ?>">
-            <input type="submit" name="btnCopy" value="Kopieren">
+            <div class="iconDiv"><img src="Assets/img/Copy.png" class="tableIcon" onclick="submit();"/></div>
+			<!--<input type="submit" name="btnCopy" value="Kopieren">-->
           </form>
         </td>
         <td>
           <form action="update.php" method="post">
             <input type="hidden" name="type" value="<?php echo $type; ?>">
             <input type="hidden" name="id" value="<?php echo $v['ID']; ?>">
-            <input type="submit" name="btnConfig" value="Konfigurieren">
+            <div class="iconDiv"><img src="Assets/img/Pencil.png" class="tableIcon" onclick="submit();"/></div>
+			<!--<input type="submit" name="btnConfig" value="Konfigurieren">-->
           </form>
         </td>
         <td>
           <form action="delete.php" method="post">
             <input type="hidden" name="type" value="<?php echo $type ?>">
             <input type="hidden" name="id" value="<?php echo $v['ID']; ?>">
-            <input type="submit" name="btnDelete" value="Löschen">
+            <div class="iconDiv"><img src="Assets/img/Delete.png" class="tableIcon" onclick="submit();"/></div>
+            <!--<input type="submit" name="btnDelete" value="Löschen">-->
           </form>
         </td>
       </tr>

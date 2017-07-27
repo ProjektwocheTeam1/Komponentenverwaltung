@@ -26,11 +26,11 @@ SQL;
     echo breadCrumb();
     ?>
     <div id="supplierOverview">
-      <h3 id="OverviewHeader">Übersicht aller Räume</h3>
+      <h2 id="OverviewHeader">Übersicht aller Räume</h2>
 
       <?php if ($_SESSION['user'] == 'Azubi' || $_SESSION['user'] == 'Systembetreuer') { ?>
       <form action="create.php?type=room" method="post">
-        <input type="submit" name="btnAnlegen" value="Raum anlegen">
+        <input class="submit_btn" type="submit" name="btnAnlegen" value="Raum anlegen">
       </form>
       <?php } ?>
 

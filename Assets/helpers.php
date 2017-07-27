@@ -49,7 +49,7 @@ function breadCrumb()
 		if(in_array($currentPage, $_SESSION['History']))
 		{
 			$key = array_search($currentPage, $_SESSION['History']);
-			$array = array_slice($_SESSION['History'], 0, $key-1);
+			$array = array_slice($_SESSION['History'], 0, $key+1);
 			$_SESSION['History'] = $array;
 		}
 		else
