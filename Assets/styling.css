@@ -141,6 +141,7 @@ ul { margin: 0; }
 	color: white;
 	border: 1px solid grey;
 	text-decoration: underline;
+	font-size: 14px;
 }
 
 .submit_btn:hover {
@@ -153,6 +154,10 @@ ul { margin: 0; }
 	padding: 0;
 	background-color: white;
 	border: none;
+}
+
+.iconBtn:hover {
+	cursor: pointer;
 }
 
 .tableIcon {
