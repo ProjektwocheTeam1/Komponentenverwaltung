@@ -130,6 +130,29 @@ ul { margin: 0; }
 }
 
 .sortable {
-	background-color: white;
-	
+	width: 600px;
+	background-color: white;	
+}
+
+.submit_btn {
+	width: 150px;
+	height: 30px;
+	background-color: #0688C1;
+	color: white;
+	border: 1px solid grey;
+	text-decoration: underline;
+}
+
+.submit_btn:hover {
+	cursor: pointer;
+}
+
+.iconDiv {
+	text-align: center;
+	padding: 0;
+}
+
+.tableIcon {
+	width: 22px;
+	height: 22px;
 }
