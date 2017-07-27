@@ -26,7 +26,7 @@
 			} 
 			else 
 			{
-				?><div>Keine Räume vorhanden!</div><?php
+				?><div>Keine RÃ¤ume vorhanden!</div><?php
 			}
 			?>
 		</div>
