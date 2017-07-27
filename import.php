@@ -23,22 +23,22 @@ if(isset($_POST['import']))
 	switch($_POST['type'])
 	{
 		case 'benutzer':
-			include('csvtomysqluser.php');
+			include('import/csvtomysqluser.php');
 			break;
 		case 'lieferant':
-			include('csvtomysqluser.php');
+			include('import/csvtomysqlsuppliers.php');
 			break;
 		case 'raeume':
-			include('csvtomysqlroom.php');
+			include('import/csvtomysqlrooms.php');
 			break;
 		case 'komponentenattribute':
-			include('csvtomysqlatributes.php');
+			include('import/csvtomysqlcomponentatributes.php');
 			break;
 		case 'komponentenarten':
-			include('csvtomysqltype.php');
+			include('import/csvtomysqlcomponenttypes.php');
 			break;
 		case 'komponenten':
-			include('csvtomysqlcomponents.php');
+			include('import/csvtomysqlcomponents.php');
 			break;
 	}
 	unlink($uploadfile);
