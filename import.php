@@ -69,18 +69,20 @@ if(isset($_POST['import']))
 				<input type="submit" name="import" value="Importieren" />
 			</form>
 			<div>
-			Hier können Sie Ihre UTF-8 kodierten CSV Dateien hochladen.
-			Bitte geben Sie an welche Datenbankobjekte Sie importieren möchten!<br />
-			
-			Die Reihenfolge des Imports und der Attribute entnehmen Sie bitte folgender Tabelle:
-				<table>
+			<div class="logInfo">
+				Hier können Sie Ihre UTF-8 kodierten CSV Dateien hochladen.<br/>
+				Bitte geben Sie an welche Datenbankobjekte Sie importieren möchten!<br/><br/>
+				Die Reihenfolge des Imports und der Attribute entnehmen Sie bitte folgender Tabelle:<br/>
+			</div>
+				<table class="logTable">
 					<tr>
 						<td>Benutzer:</td>
 						<td>Benutzername</td>
 						<td>Passwort</td>
 						<td>Rolle(1: Lehrer, 2: Verwaltung, 3: Systembetreuer, 4: Azubi)</td>
 						<td>Vorname</td>
-						<td>nachname</td>						
+						<td>Nachname</td>
+						<td colspan="2"></td>
 					</tr>
 					<tr>
 						<td>Lieferanten:</td>
@@ -95,15 +97,20 @@ if(isset($_POST['import']))
 					</tr>
 					<tr>
 						<td>Räume:</td>
-						
+						<td>Nummer</td>
+						<td>Bezeichnung</td>
+						<td>Notiz</td>
+						<td colspan="5"></td>
 					</tr>
 					<tr>
 						<td>Komponentenattribute:</td>
 						<td>Name</td>
+						<td colspan="7"></td>
 					</tr>
 					<tr>
 						<td>Komponentenarten:</td>
 						<td>Name</td>
+						<td colspan="7"></td>
 					</tr>
 					<tr>
 						<td>Komponenten:</td>
@@ -111,9 +118,13 @@ if(isset($_POST['import']))
 						<td>Gewährleistung in Jahren</td>
 						<td>Notiz</td>
 						<td>Hersteller</td>
+						<td colspan="4"></td>
 					</tr>
-				</table><br />
-			Verknüpfungen müssen Sie in den Bearbeitungsansichten der jeweiligen Objekte vornehmen.
+				</table>
+				<br />
+				<div class="logInfoAfter">
+					Verknüpfungen müssen Sie in den Bearbeitungsansichten der jeweiligen Objekte vornehmen.
+				</div>
 				
 				<?php foreach($errors as $error)
 				{

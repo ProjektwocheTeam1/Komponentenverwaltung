@@ -177,3 +177,23 @@ ul { margin: 0; }
 .deleteTable input[type="submit"] {
 	width: 120px;
 }
+
+.logInfo {
+	margin-bottom: 20px;
+}
+
+.logTable {
+	width: calc(100% - 250px);
+	border-collapse: collapse;
+	background-color: white;
+	border: 1px solid grey;
+}
+
+.logTable tr {
+	border-bottom: 1px solid grey;
+}
+
+.logTable td {
+	border: 1px solid lightgrey;
+	border-bottom: 1px solid grey;
+}
