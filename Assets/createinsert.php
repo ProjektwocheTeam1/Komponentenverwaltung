@@ -1,11 +1,4 @@
 <?php
-/**
-* This class insert data from the create form
-* into the database in the right table
-* @author: Dominik Berger
-* @editor: Atom
-**/
-var_dump($_POST['attId']);
 $Con = establishLinkForUser();
 if(isset($_POST['create_btn'])){
   switch($_POST['type']){

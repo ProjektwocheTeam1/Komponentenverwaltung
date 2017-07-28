@@ -1,10 +1,4 @@
 <?php
-/**
-* This class is the create form for the different types of objects
-* which can inserted into the database
-* @author: Dominik Berger
-* @editor: Atom
-**/
 include("Assets/helpers.php");
 	redirectToLogin();
 	$Con = establishLinkForUser();

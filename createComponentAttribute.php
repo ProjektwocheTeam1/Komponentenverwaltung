@@ -1,10 +1,4 @@
 <?php
-/**
-* this class gets the different Komponentenattribute
-* from the Komponentenart and creates a form
-* @author: Dominik Berger
-* @editor: Atom
-**/
   include("Assets/helpers.php");
 	redirectToLogin();
   include("Assets/header.php");
