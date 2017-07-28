@@ -10,6 +10,7 @@
 			<li><a class="nav_a" href="./componentOverview.php">Komponenten</a></li>
 			<li><a class="nav_a" href="./compKindOverview.php">Komponentenarten</a></li>
 			<li><a class="nav_a" href="./compAttrOverview.php">Komponentenattribute</a></li>
+			<li><a class="nav_a" href="./import.php">&Auml;nderungsverlauf</a></li>
 		</ul>
 	</nav>
 </div>
