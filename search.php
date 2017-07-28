@@ -1,10 +1,10 @@
 <?php
-	include('assets/helpers.php');
+	include('Assets/helpers.php');
 	redirectToLogin();
 	$con = establishLinkForUser();
 	$title = "Suchergebnisse";
 	$search = $_POST['components'];
-	
+
 	$result = searchComponents($search);
 	$result = queryToArray($result);
 	$type = "Komponente";
@@ -22,9 +22,9 @@
 			<?php
 			if (count($result) > 0)
 			{
-				include('assets/table.php');
-			} 
-			else 
+				include('Assets/table.php');
+			}
+			else
 			{
 				?><div>Keine Räume vorhanden!</div><?php
 			}

@@ -1,5 +1,5 @@
 <html>
-<?php $title = "Login"; include('assets/header.php');?>
+<?php $title = "Login"; include('Assets/header.php');?>
 	<body>
 		<div class="loginContent">
 			<h1>Komponentenverwaltung</h1>

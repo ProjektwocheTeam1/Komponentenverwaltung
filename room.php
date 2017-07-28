@@ -33,9 +33,9 @@
 	mysqli_close($link);
  ?>
 <html>
- <?php include('assets/header.php'); ?>
+ <?php include('Assets/header.php'); ?>
  <body>
-	<?php include('assets/nav.php'); ?>
+	<?php include('Assets/nav.php'); ?>
 	<?php echo breadCrumb(); ?>
 	<div class="content">
 		<h1><?php echo $room['Bezeichnung']; ?></h1>
@@ -46,7 +46,7 @@
 			$type='Komponente'; //needs to be set for table.php
 			if(isset($result[0]))
 			{
-				include('assets/table.php');
+				include('Assets/table.php');
 			}
 			else
 			{

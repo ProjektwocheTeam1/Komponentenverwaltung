@@ -5,7 +5,7 @@
 * @author: Felix Binder
 * @editor: Atom
 **/
-  include('assets/helpers.php');
+  include('Assets/helpers.php');
   redirectToLogin();
   $con = establishLinkForUser();
   include('Assets/updateController.php');
@@ -24,11 +24,11 @@ SQL;
 ?>
 
 <html>
- <?php include('assets/header.php'); ?>
+ <?php include('Assets/header.php'); ?>
 
   <body>
     <?php
-    include('assets/nav.php');
+    include('Assets/nav.php');
     echo breadCrumb();
     ?>
     <div id="compAttrOverview">
@@ -41,7 +41,7 @@ SQL;
       <?php } ?>
 
       <?php if (count($result) > 0) {
-        include('assets/table.php');
+        include('Assets/table.php');
       } else {
         ?>
         <div>Keine Komponentenarten vorhanden!</div>

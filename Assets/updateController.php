@@ -62,8 +62,6 @@
 					log_id = $log
 				WHERE l_id = {$_POST['id']};
 				";
-				var_dump($_POST);
-				var_dump($updateDatabaseSQL);
 				break;
 			case 'Benutzer':
 				$passwort = password_hash($_POST['Passwort']);
